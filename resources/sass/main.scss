@@ -5,15 +5,21 @@
 @import "team";
 
 .logo {
-    max-width: 120px;
+  max-width: 120px;
 }
 
 form.disabled {
-    input,
-    a {
-        pointer-events: none;
-        background-color: #e9ecef;
-        border-color: #e9ecef;
-        opacity: 1;
-    }
+  input,
+  a {
+    pointer-events: none;
+    background-color: #e9ecef;
+    border-color: #e9ecef;
+    opacity: 1;
+  }
+}
+
+.table th,
+.table td {
+  padding: 5px !important;
+  vertical-align: middle !important;
 }

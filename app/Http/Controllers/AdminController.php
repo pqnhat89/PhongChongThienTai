@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Utils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +24,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        return view('admin.index');
     }
 
     public function logo(Request $request)
@@ -69,5 +68,15 @@ class AdminController extends Controller
         }
         DB::table('team')->truncate();
         DB::table('team')->insert($data);
+    }
+
+    public function postIndex(Request $request)
+    {
+        return view('admin.post.index');
+    }
+
+    public function pageIndex(Request $request)
+    {
+        return view('admin.post.index');
     }
 }

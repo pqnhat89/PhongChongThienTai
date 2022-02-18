@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Enums\PostType;
 use Illuminate\Support\Facades\DB;
 
 class Utils
@@ -20,11 +21,6 @@ class Utils
         return $carousel->get();
     }
 
-    public static function getPost()
-    {
-        return DB::table('post')->orderBy('updated_at')->limit(10)->get();
-    }
-
     public static function getTeam()
     {
         $team = DB::table('team');
@@ -32,5 +28,15 @@ class Utils
             $team = $team->where('active', true);
         }
         return $team->get();
+    }
+
+    public static function getPost($type = null)
+    {
+        $post = DB::table('post')
+            ->where('type', '!=', PostType::PAGE);
+        if ($type) {
+            $post = $post->where('type', $type);
+        }
+        return $post->orderBy('updated_at')->get();
     }
 }

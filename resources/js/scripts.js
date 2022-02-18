@@ -16,14 +16,14 @@
     });
 
     // Active slider
-    $(".owl-carousel").owlCarousel({
-        items: 3,
-        itemsDesktop: [1199, 3],
-        itemsDesktopSmall: [980, 2],
-        itemsMobile: [600, 1],
-        pagination: true,
-        navigationText: true
-    });
+    // $(".owl-carousel").owlCarousel({
+    //     items: 3,
+    //     itemsDesktop: [1199, 3],
+    //     itemsDesktopSmall: [980, 2],
+    //     itemsMobile: [600, 1],
+    //     pagination: true,
+    //     navigationText: true
+    // });
 
     // Token
     let token = $("meta[name='csrf-token']").attr("content");

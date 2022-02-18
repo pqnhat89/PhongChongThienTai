@@ -7,7 +7,7 @@
                 <img src="{{ $v->image }}" alt="">
                 <div class="post-info">
                     <ul class="category">
-                        <li>in <a href="#">{{ $v->category }}</a></li>
+                        <li>in <a href="#">{{ $v->type }}</a></li>
                     </ul>
                     <span class="post-date">
                         {{ \Carbon\Carbon::parse($v->updated_at)->toFormattedDateString() }}
@@ -20,7 +20,7 @@
                 </span> --}}
                 <h3 class="post-title"><a href="#">{{ $v->title }}</a></h3>
                 <p class="post-description">
-                    {{ substr(strip_tags($v->description), 0, 200) }}  . . .
+                    {{ substr(strip_tags($v->content), 0, 200) }}  . . .
                 </p>
                 <a href="#" class="read">read more</a>
             </div>
