@@ -37,6 +37,6 @@ class Utils
         if ($type) {
             $post = $post->where('type', $type);
         }
-        return $post->orderBy('updated_at')->get();
+        return $post->orderBy('updated_at', 'desc')->get();
     }
 }

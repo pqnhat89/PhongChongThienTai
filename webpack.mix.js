@@ -20,8 +20,7 @@ mix.options({
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/scripts.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
+mix.js('resources/js/scripts.js', 'public/js')
     .sass('resources/sass/main.scss', 'public/css')
-    .copy('resources/css/styles.css', 'public/css');
+    .copy('resources/css/styles.css', 'public/css')
+    .copy('resources/css/style.css', 'public/css');

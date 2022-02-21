@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -73,6 +74,28 @@ class AdminController extends Controller
     public function postIndex(Request $request)
     {
         return view('admin.post.index');
+    }
+
+    public function postUpdate(Request $request)
+    {
+        $post = DB::table('post')->where('id', $request->id);
+        if ($request->isMethod('get')) {
+            return view('admin.post.update', ['post' => $post->first()]);
+        } else {
+            $post->update([
+                'title' => $request->title,
+                'url' => $request->url,
+                'image' => $request->image,
+                'content' => $request->content,
+                'updated_at' => now(),
+                'updated_by' => Auth::user()->email
+            ]);
+        }
+    }
+
+    public function postDelete(Request $request)
+    {
+        DB::table('post')->where('id', $request->id)->delete();
     }
 
     public function pageIndex(Request $request)

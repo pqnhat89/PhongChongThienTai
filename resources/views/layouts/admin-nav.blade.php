@@ -16,11 +16,11 @@
             </a>
             <a class="nav-link" href="{{ route('admin.page.index') }}">
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
-                Page
+                Trang
             </a>
             <a class="nav-link" href="{{ route('admin.post.index') }}">
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
-                Post
+                Bài viết
             </a>
         </div>
     </div>

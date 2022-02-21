@@ -31,6 +31,6 @@ Route::group(['prefix' => 'admin'], function () {
     // post
     Route::get('/post', 'AdminController@postIndex')->name('admin.post.index');
     Route::get('/post/create', 'AdminController@postCreate')->name('admin.post.create');
-    Route::get('/post/update/{id}', 'AdminController@postUpdate')->name('admin.post.update');
-    Route::get('/post/delete/{id}', 'AdminController@postDelete')->name('admin.post.delete');
+    Route::match(['get', 'put'], '/post/update/{id}', 'AdminController@postUpdate')->name('admin.post.update');
+    Route::delete('/post/delete/{id}', 'AdminController@postDelete')->name('admin.post.delete');
 });
