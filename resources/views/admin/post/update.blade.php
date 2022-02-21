@@ -1,6 +1,4 @@
-<div class="modal-header">
-    POST
-</div>
+<div class="modal-header">&nbsp;</div>
 <div class="modal-body">
     <div class="form-group">
         <label for="title">Title</label>
@@ -10,9 +8,24 @@
         <label for="url">Url</label>
         <input type="text" class="form-control" id="url" placeholder="Url" value="{{ $post->url }}">
     </div>
+    @if ($post->type != \App\Enums\PostType::PAGE)
+        <div class="form-group">
+            <label for="type">Danh mục</label><br>
+            @php 
+                $type = \App\Enums\PostType::toArray();
+                unset($type['PAGE']);
+            @endphp
+            <select name="type" id="type">
+                @foreach ($type as $v)
+                    <option value="{{ $v }}" {{ $post->type == $v ? 'selected' : null }}>
+                        {{ $v }}
+                    </option>
+                @endforeach
+            </select> 
+        </div>
+    @endif
     <div class="form-group">
-        <label for="image">Image</label><br>
-        <img src="{{ $post->image }}" style="max-width: 200px">
+        <label for="image">Image</label>
         <input class="form-control ckfinder" id="image" type="text" value="{{ $post->image }}">
     </div>
     <div class="form-group">
@@ -44,6 +57,7 @@
                     _token: '{{ csrf_token() }}',
                     title: $('#title').val(),
                     url: $('#url').val(),
+                    type: $('#type').val(),
                     image: $('#image').val(),
                     content: CKEDITOR.instances.content.getData()
                 },

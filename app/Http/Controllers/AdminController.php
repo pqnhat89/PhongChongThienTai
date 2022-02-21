@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PostType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -73,7 +74,38 @@ class AdminController extends Controller
 
     public function postIndex(Request $request)
     {
-        return view('admin.post.index');
+        // init conditions
+        $conditions = [];
+        $routeName = $request->route()->getName();
+        if ($routeName == 'admin.post.index') {
+            $conditions[] = [
+                'type', '!=', PostType::PAGE
+            ];
+        } else {
+            $conditions[] = [
+                'type', '=', PostType::PAGE
+            ];
+        }
+
+        // get condition
+        if ($request->title) {
+            $conditions[] = [
+                'title', 'like', '%' . $request->title . '%'
+            ];
+        }
+        if ($request->type) {
+            $conditions[] = [
+                'type', '=', $request->type
+            ];
+        }
+
+        // query
+        $post = DB::table('post')->where($conditions)
+            ->orderBy('updated_at', 'desc')->simplePaginate(20);
+
+        return view('admin.post.index', [
+            'post' => $post
+        ]);
     }
 
     public function postUpdate(Request $request)
@@ -85,6 +117,7 @@ class AdminController extends Controller
             $post->update([
                 'title' => $request->title,
                 'url' => $request->url,
+                'type' => $request->type,
                 'image' => $request->image,
                 'content' => $request->content,
                 'updated_at' => now(),
@@ -96,10 +129,5 @@ class AdminController extends Controller
     public function postDelete(Request $request)
     {
         DB::table('post')->where('id', $request->id)->delete();
-    }
-
-    public function pageIndex(Request $request)
-    {
-        return view('admin.post.index');
     }
 }

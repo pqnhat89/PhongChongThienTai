@@ -29,14 +29,4 @@ class Utils
         }
         return $team->get();
     }
-
-    public static function getPost($type = null)
-    {
-        $post = DB::table('post')
-            ->where('type', '!=', PostType::PAGE);
-        if ($type) {
-            $post = $post->where('type', $type);
-        }
-        return $post->orderBy('updated_at', 'desc')->get();
-    }
 }

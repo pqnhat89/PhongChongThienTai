@@ -23,10 +23,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/team', 'AdminController@team')->name('admin.team');
 
     // page
-    Route::get('/page', 'AdminController@pageIndex')->name('admin.page.index');
-    Route::get('/page/create', 'AdminController@pageCreate')->name('admin.page.create');
-    Route::get('/page/update/{id}', 'AdminController@pageUpdate')->name('admin.page.update');
-    Route::get('/page/delete/{id}', 'AdminController@pageDelete')->name('admin.page.delete');
+    Route::get('/page', 'AdminController@postIndex')->name('admin.page.index');
 
     // post
     Route::get('/post', 'AdminController@postIndex')->name('admin.post.index');

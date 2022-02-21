@@ -5,3 +5,8 @@
 .cke_toolbox > span:nth-child(9) {
   display: none !important;
 }
+
+.pagination {
+  margin: 0;
+  margin-bottom: 1rem;
+}
