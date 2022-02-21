@@ -76,16 +76,6 @@ class AdminController extends Controller
     {
         // init conditions
         $conditions = [];
-        $routeName = $request->route()->getName();
-        if ($routeName == 'admin.post.index') {
-            $conditions[] = [
-                'type', '!=', PostType::PAGE
-            ];
-        } else {
-            $conditions[] = [
-                'type', '=', PostType::PAGE
-            ];
-        }
 
         // get condition
         if ($request->title) {
@@ -114,15 +104,24 @@ class AdminController extends Controller
         if ($request->isMethod('get')) {
             return view('admin.post.update', ['post' => $post->first()]);
         } else {
-            $post->update([
+            $data = [
                 'title' => $request->title,
-                'url' => $request->url,
                 'type' => $request->type,
                 'image' => $request->image,
                 'content' => $request->content,
                 'updated_at' => now(),
                 'updated_by' => Auth::user()->email
-            ]);
+            ];
+            if ($request->id) {
+                $post->update($data);
+            } else {
+                DB::table('post')->insert(
+                    array_merge($data, [
+                        'created_at' => now(),
+                        'created_by' => Auth::user()->email
+                    ])
+                );
+            }
         }
     }
 

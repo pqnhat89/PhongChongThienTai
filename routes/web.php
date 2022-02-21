@@ -22,9 +22,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/carousel', 'AdminController@carousel')->name('admin.carousel');
     Route::post('/team', 'AdminController@team')->name('admin.team');
 
-    // page
-    Route::get('/page', 'AdminController@postIndex')->name('admin.page.index');
-
     // post
     Route::get('/post', 'AdminController@postIndex')->name('admin.post.index');
     Route::get('/post/create', 'AdminController@postCreate')->name('admin.post.create');
