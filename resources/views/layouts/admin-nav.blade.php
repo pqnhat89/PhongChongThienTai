@@ -18,6 +18,10 @@
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
                 Bài viết
             </a>
+            <a class="nav-link" href="{{ route('admin.user.index') }}">
+                <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
+                Người dùng
+            </a>
         </div>
     </div>
     <div class="sb-sidenav-footer">

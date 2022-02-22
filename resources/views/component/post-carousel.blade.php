@@ -1,4 +1,4 @@
-@php $post = \App\Helpers\Utils::getPost() @endphp
+@php $post = [] @endphp
 
 <div class="owl-carousel">
     @foreach ($post as $v)

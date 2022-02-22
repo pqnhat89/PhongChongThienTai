@@ -7,20 +7,12 @@
     <div class="card shadow-lg">
         <div class="card-header">
             <h3 class="text-center font-weight-light">
-                Bài viết
+                Người dùng
             </h3>
             <form method="get">    
                 <div class="col-xs-8 col-xs-offset-2">
                     <div class="input-group">
-                        <select name="type">
-                            <option value="">Tất cả danh mục</option>
-                            @foreach (\App\Enums\PostType::toArray() as $v)
-                                <option value="{{ $v }}" {{ request()->type == $v ? 'selected' : null }}>
-                                    {{ $v }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <input type="text" class="form-control" name="title" placeholder="Tiêu đề" value="{{ request()->title }}">
+                        <input type="text" class="form-control" name="emailorname" placeholder="Email hoặc tên người dùng" value="{{ request()->emailorname }}">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
@@ -29,35 +21,40 @@
             </form>
         </div>
         <div class="card-body">
-            <button class="btn btn-warning postUpdate" data-url="{{ route('admin.post.update', 
-                ['id' => 0]) }}">
-                Thêm mới
-            </button>
+            @if (\app\Enums\UserRole::isSupper())
+                <button class="btn btn-warning userUpdate" data-url="{{ route('admin.user.update', 
+                    ['id' => 0]) }}">
+                    Thêm mới
+                </button>
+            @endif
             <div class="float-right">
-                {{ $post->links() }}
+                {{ $user->links() }}
             </div>
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                         <th width="50">ID</th>
-                        <th>Tiêu đề</th>
-                        <th width="100">Danh mục</th>
+                        <th>Tên người dùng</th>
+                        <th width="100">Email</th>
                         <th width="50"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($post))
-                        @foreach ($post as $v)
+                    @if (count($user))
+                        @foreach ($user as $v)
                             <tr>
                                 <td nowrap>{{ $v->id }}</td>
-                                <td>{{ $v->title }}</td>
-                                <td nowrap>{{ $v->type }}</td>
+                                <td nowrap>{{ $v->name }}</td>
+                                <td nowrap>{{ $v->email }}</td>
                                 <td nowrap>
-                                    <button class="btn btn-sm btn-info">Xem</button>
-                                    <button class="btn btn-sm btn-warning postUpdate"
-                                        data-url="{{ route('admin.post.update', ['id' => $v->id]) }}">Sửa</button>
-                                    <button class="btn btn-sm btn-danger postDelete" data-title="{{ $v->title }}"
-                                        data-url="{{ route('admin.post.delete', ['id' => $v->id]) }}">Xoá</button>
+                                    @if ((\app\Enums\UserRole::isSupper()) || (auth()->user()->id == $v->id))
+                                        <button class="btn btn-sm btn-warning userUpdate"
+                                            data-url="{{ route('admin.user.update', ['id' => $v->id]) }}">Sửa</button>
+                                    @endif
+                                    @if ((\app\Enums\UserRole::isSupper()) && ($v->role != \app\Enums\UserRole::SUPPER))
+                                        <button class="btn btn-sm btn-danger userDelete" data-name="{{ $v->name }}"
+                                            data-url="{{ route('admin.user.delete', ['id' => $v->id]) }}">Xoá</button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -67,21 +64,21 @@
                 </tbody>
             </table>
             <div class="float-right">
-                {{ $post->links() }}
+                {{ $user->links() }}
             </div>
         </div>
     </div>
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             ...
         </div>
     </div>
 </div>
 <script>
-    $('.postUpdate').click(function () {
+    $('.userUpdate').click(function () {
         $.ajax({
             url: $(this).data('url'),
             success: function (response) {
@@ -91,8 +88,8 @@
         });
     });
 
-    $('.postDelete').click(function () {
-        if (confirm("Xóa " + $(this).data('title') + " ?")) {
+    $('.userDelete').click(function () {
+        if (confirm("Xóa " + $(this).data('name') + " ?")) {
             $.ajax({
                 method: 'post',
                 url: $(this).data('url'),
@@ -102,6 +99,9 @@
                 },
                 success: function () {
                     location.reload();
+                },
+                error: function (res) {
+                    alert(res.responseText);
                 }
             });
         }

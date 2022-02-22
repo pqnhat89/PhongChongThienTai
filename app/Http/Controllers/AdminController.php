@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Enums\PostType;
+use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -16,7 +18,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth']);
     }
 
     /**
@@ -72,6 +74,9 @@ class AdminController extends Controller
         DB::table('team')->insert($data);
     }
 
+    /**
+     * POST
+     */
     public function postIndex(Request $request)
     {
         // init conditions
@@ -128,5 +133,97 @@ class AdminController extends Controller
     public function postDelete(Request $request)
     {
         DB::table('post')->where('id', $request->id)->delete();
+    }
+
+    /**
+     * USER
+     */
+    public function userIndex(Request $request)
+    {
+        $user = DB::table('users');
+
+        if (UserRole::isAdmin()) {
+            $user = $user->where('role', UserRole::ADMIN);
+        }
+
+        // get condition
+        if ($request->emailorname) {
+            $user = $user->where(function ($w) use ($request) {
+                $w->where('name', 'like', '%' . $request->emailorname . '%')
+                    ->orWhere('email', 'like', '%' . $request->emailorname . '%');
+            });
+        }
+
+        // query
+        $user = $user->orderBy('id')->simplePaginate(20);
+
+        return view('admin.user.index', [
+            'user' => $user
+        ]);
+    }
+
+    public function userUpdate(Request $request)
+    {
+        $authUser = auth()->user();
+        // validation role
+        if (
+            (UserRole::isAdmin())
+            && ($authUser->id != $request->id)
+        ) {
+            return response('Người dùng không có quyền!', 400);
+        }
+
+        $user = DB::table('users')->where('id', $request->id);
+        if ($request->isMethod('get')) {
+            return view('admin.user.update', ['user' => $user->first()]);
+        } else {
+            // validation
+            if (!Hash::check($request->currentpassword, $authUser->password)) {
+                return response('Xác nhận: Nhập mật khẩu hiện tại của bạn không chính xác!', 400);
+            }
+
+            // update
+            $data = [
+                'name' => $request->name,
+                'updated_at' => now(),
+                'updated_by' => $authUser->email
+            ];
+            if ($request->newpassword) {
+                $data['password'] = bcrypt($request->newpassword);
+            }
+            if ($request->id) {
+                $user->update($data);
+            } else {
+                // validation
+                if (!$request->email) {
+                    return response('Vui lòng nhập Email!', 400);
+                }
+                if (!$request->newpassword) {
+                    return response('Vui lòng nhập Password!', 400);
+                }
+
+                // insert
+                DB::table('users')->insert(
+                    array_merge($data, [
+                        'email' => $request->email,
+                        'created_at' => now(),
+                        'created_by' => Auth::user()->email
+                    ])
+                );
+            }
+        }
+    }
+
+    public function userDelete(Request $request)
+    {
+        // validation role
+        if (UserRole::isAdmin()) {
+            return response('Người dùng không có quyền!', 400);
+        }
+        $user = DB::table('users')->where('id', $request->id);
+        if ($user->first()->role == UserRole::SUPPER) {
+            return response('Người dùng không có quyền!', 400);
+        }
+        $user->delete();
     }
 }

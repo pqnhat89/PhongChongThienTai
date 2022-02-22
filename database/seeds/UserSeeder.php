@@ -12,12 +12,24 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')
-            ->insert([
-                'name' => 'Admin',
-                'email' => 'pqnhat89@gmail.com',
-                'password' => bcrypt('123'),
-                'role' => 1
-            ]);
+        $data = [];
+        for ($i = 0; $i < 10; $i++) {
+            if ($i == 0) {
+                $data[] = [
+                    'name' => 'Supper Admin',
+                    'email' => 'supper@gmail.com',
+                    'password' => bcrypt('123'),
+                    'role' => 1
+                ];
+            } else {
+                $data[] = [
+                    'name' => "Admin $i",
+                    'email' => "admin$i@gmail.com",
+                    'password' => bcrypt('123'),
+                    'role' => 0
+                ];
+            }
+        }
+        DB::table('users')->insert($data);
     }
 }

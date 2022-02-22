@@ -64,6 +64,7 @@
             </div> --}}
         </form>
         <!-- Navbar-->
+        <h4 class="text-white">{{ auth()->user()->name }}</h4>
         <ul class="navbar-nav ml-auto ml-md-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-fw"></i></a>

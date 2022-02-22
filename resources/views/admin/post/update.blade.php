@@ -35,8 +35,9 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-primary" id="save" data-url="{{ route('admin.post.update', ['id' => $post->id ?? 0]) }}">Save
+    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+    <button type="button" class="btn btn-primary" id="save" data-url="{{ route('admin.post.update', ['id' => $post->id ?? 0]) }}">
+        Lưu
     </button>
     <script>
         $(document).on('click', '.modal #save', function () {
