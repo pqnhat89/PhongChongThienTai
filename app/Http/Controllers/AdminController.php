@@ -31,34 +31,6 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function logo(Request $request)
-    {
-        DB::table('logo')->truncate();
-        DB::table('logo')->insert([
-            'name' => $request->name,
-            'slogan' => $request->slogan,
-            'description' => $request->description,
-            'image' => $request->image
-        ]);
-    }
-
-    public function team(Request $request)
-    {
-        $data = [];
-        foreach ($request->name ?? [] as $k => $v) {
-            $data[] = [
-                'name' => ($request->name)[$k],
-                'position' => ($request->position)[$k],
-                'slogan' => ($request->slogan)[$k],
-                'description' => ($request->description)[$k],
-                'image' => ($request->image)[$k],
-                'active' => $request->enabled ? true : false
-            ];
-        }
-        DB::table('team')->truncate();
-        DB::table('team')->insert($data);
-    }
-
     /**
      * POST
      */
@@ -245,6 +217,46 @@ class AdminController extends Controller
             }
             DB::table('setting')->truncate();
             DB::table('setting')->insert($data);
+        }
+    }
+
+    public function menu(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return view('admin.menu.index', ['menu' => DB::table('menu')->orderBy('order')->get()]);
+        } else {
+            $data = [];
+            foreach ($request->title ?? [] as $k => $v) {
+                $data[] = [
+                    'title' => ($request->title)[$k],
+                    'url' => ($request->url)[$k],
+                    'icon' => ($request->icon)[$k],
+                    'order' => ($request->order)[$k]
+                ];
+            }
+            DB::table('menu')->truncate();
+            DB::table('menu')->insert($data);
+        }
+    }
+
+    public function submenu(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return view('admin.menu.sub', [
+                'menu' => DB::table('submenu')->where('menu_id', $request->id)->orderBy('order')->get()
+            ]);
+        } else {
+            $data = [];
+            foreach ($request->title ?? [] as $k => $v) {
+                $data[] = [
+                    'menu_id' => $request->id,
+                    'title' => ($request->title)[$k],
+                    'url' => ($request->url)[$k],
+                    'order' => ($request->order)[$k]
+                ];
+            }
+            DB::table('submenu')->where('menu_id', $request->id)->delete();
+            DB::table('submenu')->insert($data);
         }
     }
 }

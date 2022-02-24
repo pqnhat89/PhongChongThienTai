@@ -22,7 +22,7 @@
         </div>
         <div class="card-body">
             @if (\app\Enums\UserRole::isSupper())
-                <button class="btn btn-warning userUpdate" data-url="{{ route('admin.user.update', 
+                <button class="btn btn-primary userUpdate" data-url="{{ route('admin.user.update', 
                     ['id' => 0]) }}">
                     Thêm mới
                 </button>

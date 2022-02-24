@@ -12,6 +12,9 @@
             <a class="nav-link" href="{{ route('admin.banner.index') }}">
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
                 Banner
+            </a><a class="nav-link" href="{{ route('admin.menu.index') }}">
+                <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
+                Menu
             </a>
             <a class="nav-link" href="{{ route('admin.setting.index') }}">
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>

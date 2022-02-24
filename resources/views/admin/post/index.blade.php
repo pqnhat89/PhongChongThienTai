@@ -29,7 +29,7 @@
             </form>
         </div>
         <div class="card-body">
-            <button class="btn btn-warning postUpdate" data-url="{{ route('admin.post.update', 
+            <button class="btn btn-primary postUpdate" data-url="{{ route('admin.post.update', 
                 ['id' => 0]) }}">
                 Thêm mới
             </button>

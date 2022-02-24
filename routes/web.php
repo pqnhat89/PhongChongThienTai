@@ -39,4 +39,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     // setting
     Route::match(['get', 'post'], '/setting', 'AdminController@setting')->name('admin.setting.index');
+
+    // menu
+    Route::match(['get', 'post'], '/menu', 'AdminController@menu')->name('admin.menu.index');
+    Route::match(['get', 'post'], '/menu/{id}', 'AdminController@submenu')->name('admin.menu.sub');
 });
