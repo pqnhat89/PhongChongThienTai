@@ -30,10 +30,10 @@
 
     // Handle ajax
     $(document).ajaxError(function (event, request, settings) {
-        alert("Error! An error occurred. Please try again later !!!");
+        alert("Đã có lỗi xảy ra, vùi lòng F5 lại trang & thử lại.");
     });
     $(document).ajaxSuccess(function (event, request, settings) {
-        alert("Saved successfully !!!");
+        alert("Lưu thành công.");
     });
 
     // Add active state to sidbar nav links

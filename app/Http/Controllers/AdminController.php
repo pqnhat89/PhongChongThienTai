@@ -229,4 +229,22 @@ class AdminController extends Controller
             DB::table('banner')->insert($data);
         }
     }
+
+    public function setting(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return view('admin.setting.index', ['setting' => DB::table('setting')->get()]);
+        } else {
+            $data = [];
+            foreach ($request->name ?? [] as $k => $v) {
+                $data[] = [
+                    'name' => ($request->name)[$k] ?? null,
+                    'content' => ($request->content)[$k] ?? null,
+                    'image' => ($request->image)[$k] ?? null
+                ];
+            }
+            DB::table('setting')->truncate();
+            DB::table('setting')->insert($data);
+        }
+    }
 }

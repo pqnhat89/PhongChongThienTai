@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form class="container-fluid pt-5 form-banner"
+<form class="container-fluid pt-5 form-ajax"
     action="{{ route("admin.banner.index") }}" id="banner">
     <div class="card shadow-lg">
         <div class="card-header">
@@ -49,23 +49,5 @@
         </div>
     </div>
 </form>
-
-<script>
-    $(".form-banner").submit(function (e) {
-        e.preventDefault();
-        let url = $(this).attr('action');
-        url = url ? url : window.location.href;
-        let data = $(this).serializeArray();
-        data.push({ name: '_token', value: $("meta[name='csrf-token']").attr("content") });
-        $.ajax({
-            method: "POST",
-            url: url,
-            data: data,
-            success: function() {
-                alert('Lưu thành công.')
-            }
-        });
-    });
-</script>
 
 @endsection

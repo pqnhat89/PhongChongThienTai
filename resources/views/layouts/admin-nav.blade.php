@@ -13,6 +13,10 @@
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
                 Banner
             </a>
+            <a class="nav-link" href="{{ route('admin.setting.index') }}">
+                <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
+                Cài đặt khác
+            </a>
         </div>
     </div>
     <div class="sb-sidenav-footer">

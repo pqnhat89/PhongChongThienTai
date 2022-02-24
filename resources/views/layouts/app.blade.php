@@ -10,11 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        @if($logo->name ?? false)
-            {{ $logo->name . " - " . $logo->slogan }}
-        @else
-            {{ config('app.name', 'Laravel') }}
-        @endif
+        {{ $title ?? $logo->content ?? '' }}
     </title>
 
     {{-- Plugins --}}
@@ -47,7 +43,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="/">
             @if ($logo)
-                <img class="logo" src="{{ $logo->image }}" title="{{ $logo->name }}">
+                <img class="logo" src="{{ $logo->image }}" title="{{ $logo->content }}">
             @else
                 {{ config('app.name', 'Laravel') }}
             @endif

@@ -36,4 +36,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     // banner
     Route::match(['get', 'post'], '/banner', 'AdminController@banner')->name('admin.banner.index');
+
+    // setting
+    Route::match(['get', 'post'], '/setting', 'AdminController@setting')->name('admin.setting.index');
 });
