@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-2">
                             <label>&nbsp;</label><br>
-                            <a class="btn btn-sm btn-primary" href="{{ route('admin.menu.sub', ['id' => $v->id]) }}">Tạo Menu con</a>
+                            <a class="btn btn-sm btn-primary" href="{{ route('admin.menu.sub', ['id' => $v->id ?? null]) }}">Tạo Menu con</a>
                             <a class="btn btn-sm btn-danger delete_row">Xoá</a>
                         </div>
                     </div>
