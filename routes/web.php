@@ -33,4 +33,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/user/create', 'AdminController@userCreate')->name('admin.user.create');
     Route::match(['get', 'put'], '/user/update/{id}', 'AdminController@userUpdate')->name('admin.user.update');
     Route::delete('/user/delete/{id}', 'AdminController@userDelete')->name('admin.user.delete');
+
+    // banner
+    Route::match(['get', 'post'], '/banner', 'AdminController@banner')->name('admin.banner.index');
 });

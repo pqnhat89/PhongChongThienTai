@@ -12,15 +12,6 @@ class Utils
         return DB::table('logo')->first();
     }
 
-    public static function getCarousel()
-    {
-        $carousel = DB::table('carousel');
-        if (request()->route()->getName() != 'admin') {
-            $carousel = $carousel->where('active', true);
-        }
-        return $carousel->get();
-    }
-
     public static function getTeam()
     {
         $team = DB::table('team');

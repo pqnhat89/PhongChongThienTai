@@ -42,21 +42,6 @@ class AdminController extends Controller
         ]);
     }
 
-    public function carousel(Request $request)
-    {
-        $data = [];
-        foreach ($request->title ?? [] as $k => $v) {
-            $data[] = [
-                'title' => ($request->title)[$k],
-                'description' => ($request->description)[$k],
-                'image' => ($request->image)[$k],
-                'active' => $request->enabled ? true : false
-            ];
-        }
-        DB::table('carousel')->truncate();
-        DB::table('carousel')->insert($data);
-    }
-
     public function team(Request $request)
     {
         $data = [];
@@ -225,5 +210,23 @@ class AdminController extends Controller
             return response('Người dùng không có quyền!', 400);
         }
         $user->delete();
+    }
+
+    public function banner(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return view('admin.banner.index', ['banner' => DB::table('banner')->get()]);
+        } else {
+            $data = [];
+            foreach ($request->title ?? [] as $k => $v) {
+                $data[] = [
+                    'title' => ($request->title)[$k],
+                    'description' => ($request->description)[$k],
+                    'image' => ($request->image)[$k]
+                ];
+            }
+            DB::table('banner')->truncate();
+            DB::table('banner')->insert($data);
+        }
     }
 }

@@ -31,7 +31,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if (auth()->user()) {
-            return redirect('/admin');
+            return redirect('/admin/post');
         }
         return redirect('/');
     }
