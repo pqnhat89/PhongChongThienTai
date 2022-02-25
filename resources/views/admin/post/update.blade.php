@@ -1,8 +1,8 @@
 <div class="modal-header">&nbsp;</div>
 <div class="modal-body">
     <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Title" value="{{ $post->title ?? null }}">
+        <label for="title">Tiêu đề</label>
+        <input type="text" class="form-control" id="title" placeholder="Tiêu đề" value="{{ $post->title ?? null }}">
     </div>
     <div class="form-group">
         <label for="type">Danh mục</label><br>
@@ -16,11 +16,11 @@
         </select> 
     </div>
     <div class="form-group">
-        <label for="image">Image</label>
-        <input class="form-control ckfinder" id="image" type="text" value="{{ $post->image ?? null }}">
+        <label for="image">Ảnh</label>
+        <input class="form-control ckfinder" id="image" type="text" placeholder="Ảnh" value="{{ $post->image ?? null }}">
     </div>
     <div class="form-group">
-        <label for="content">Content</label>
+        <label for="content">Nội dung</label>
         <textarea class="form-control" id="content">
             {{ $post->content ?? null }}
         </textarea>

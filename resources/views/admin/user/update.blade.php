@@ -2,11 +2,11 @@
 <div class="modal-body">
     <div class="form-group">
         <label for="name">Tên người dùng</label>
-        <input type="text" class="form-control" id="name" placeholder="Name" value="{{ $user->name ?? null }}">
+        <input type="text" class="form-control" id="name" placeholder="Tên người dùng" value="{{ $user->name ?? null }}">
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" placeholder="Name" value="{{ $user->email ?? null }}"
+        <input type="text" class="form-control" id="email" placeholder="Email" value="{{ $user->email ?? null }}"
             {{ isset($user) ? 'disabled' : null }}>
     </div>
     <div class="form-group">
