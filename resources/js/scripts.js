@@ -33,6 +33,9 @@
         alert("Đã có lỗi xảy ra, vùi lòng F5 lại trang & thử lại.");
     });
     $(document).ajaxSuccess(function (event, request, settings) {
+        if (request.responseJSON && request.responseJSON.reload) {
+            location.reload();
+        }
         alert("Lưu thành công.");
     });
 

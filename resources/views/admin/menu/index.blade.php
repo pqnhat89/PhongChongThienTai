@@ -14,6 +14,7 @@
                 @php $menu = count($menu) ? $menu : [1] @endphp
                 @foreach ($menu as $v)
                     <div class="row">
+                        <input name="id[]" type="hidden" value="{{ $v->id ?? null }}">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="small" for="title">Tiêu đề</label>

@@ -197,8 +197,10 @@ class AdminController extends Controller
                     'image' => ($request->image)[$k]
                 ];
             }
-            DB::table('banner')->truncate();
-            DB::table('banner')->insert($data);
+            DB::transaction(function () use ($data) {
+                DB::table('banner')->delete();
+                DB::table('banner')->insert($data);
+            });
         }
     }
 
@@ -215,28 +217,46 @@ class AdminController extends Controller
                     'image' => ($request->image)[$k] ?? null
                 ];
             }
-            DB::table('setting')->truncate();
-            DB::table('setting')->insert($data);
+            DB::transaction(function () use ($data) {
+                DB::table('setting')->delete();
+                DB::table('setting')->insert($data);
+            });
         }
     }
 
     public function menu(Request $request)
     {
+        $reload = false;
         if ($request->isMethod('get')) {
             return view('admin.menu.index', ['menu' => DB::table('menu')->orderBy('order')->get()]);
         } else {
-            $data = [];
-            foreach ($request->title ?? [] as $k => $v) {
-                $data[] = [
-                    'title' => ($request->title)[$k],
-                    'url' => ($request->url)[$k],
-                    'icon' => ($request->icon)[$k],
-                    'order' => ($request->order)[$k]
-                ];
-            }
-            DB::table('menu')->truncate();
-            DB::table('menu')->insert($data);
+            $reload = DB::transaction(function () use ($request, $reload) {
+                // update menu
+                foreach ($request->id ?? [] as $k => $id) {
+                    $data = [
+                        'title' => ($request->title)[$k],
+                        'url' => ($request->url)[$k],
+                        'icon' => ($request->icon)[$k],
+                        'order' => ($request->order)[$k]
+                    ];
+                    if ($id) {
+                        // update
+                        DB::table('menu')->where('id', $id)->update($data);
+                    } else {
+                        // insert
+                        DB::table('menu')->insert($data);
+                        $reload = true;
+                    }
+                }
+                // delete menu
+                DB::table('menu')->whereNotIn('id', $request->id ?? [0])->delete();
+                DB::table('submenu')->whereNotIn('menu_id', $request->id ?? [0])->delete();
+                return $reload;
+            });
         }
+        return [
+            'reload' => $reload
+        ];
     }
 
     public function submenu(Request $request)
