@@ -1,0 +1,151 @@
+@media screen and (max-width:800px) {
+    .banner-bch-text {
+        font-size: 28px;
+		color: #0a64a4; 
+		font-weight: bold; 
+		text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; 
+		margin-bottom: 5px;
+    }
+}
+
+@media screen and (min-width:800px) {
+    .banner-bch-text {
+        font-size: 28px; 
+		color: #0a64a4; 
+		font-weight: bold; 
+		text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; 
+		margin-bottom: 5px;
+    }
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar-default {
+    background-color: #0a64a4;
+    border-color: #0a64a4;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel-control.right {
+    background-image: none;
+}
+
+.navbar-nav>li>a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.navbar {
+    position: relative;
+    min-height: 35px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+}
+
+.navbar li {
+    font-size: 14px;
+}
+
+a.btn, a.btn:visited {
+    color: #fff !important;    
+}
+
+.table
+{
+    margin-top:10px;
+}
+
+.post-item {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    background-color: #ffffff;
+}
+
+.post-title {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.post-utility {
+    float: right;
+}
+
+.post-info {
+    font-size: 12px;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #666664;
+    display: block;
+}
+
+.post-description {
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: justify;
+    padding-bottom: 5px;
+}
+
+.view-detail {
+    text-align: right;
+}
+
+.image-thumbnail {
+    float: left;
+    margin: 0 25px 0 5px;
+}
+
+.img-thumbnail
+{
+	padding: 0px;
+}
+
+.input-group-btn .glyphicon
+{
+	color: #333;
+}
+
+.spLinks li {
+    background-image: none;
+    border-width: 1px;
+    border-style: solid;    
+    text-align: left;
+    padding: 0px 0px 0px 2px;
+    margin-bottom: 6px;
+    list-style-type: none;
+}
+
+.spLinks li a {
+    font-size: 14px;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    padding: 5px 0 5px 50px;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+}
+
+.spLinks li {
+    background-color: #005284;
+    border-color: #005284;
+}
+
+body
+{
+	width: 1204px;
+    	margin: 0 auto;
+}
