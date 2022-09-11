@@ -15,12 +15,20 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show homepage.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('home');
+        return view('front-end.index');
     }
+	
+	public function about() {
+		return view('front-end.about');
+	}
+	
+	public function structure() {
+		return view('front-end.structure');
+	}
 }

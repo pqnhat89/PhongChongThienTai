@@ -14,6 +14,10 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/gioi-thieu', 'HomeController@about')->name('about');
+Route::get('/so-do-to-chuc', 'HomeController@structure')->name('structure');
+Route::get('/the-loai/{type}', 'PostController@index')->name('postIndex');
+Route::get('/xem/{id}', 'PostController@view')->name('postView');
 
 Route::group(['prefix' => 'admin'], function () {
     // setting
