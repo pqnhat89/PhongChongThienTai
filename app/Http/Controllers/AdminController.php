@@ -68,6 +68,7 @@ class AdminController extends Controller
         } else {
             $data = [
                 'title' => $request->title,
+                'sub_title' => $request->sub_title,
                 'type' => $request->type,
                 'image' => $request->image,
                 'content' => $request->content,

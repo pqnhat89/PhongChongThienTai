@@ -5,6 +5,10 @@
         <input type="text" class="form-control" id="title" placeholder="Tiêu đề" value="{{ $post->title ?? null }}">
     </div>
     <div class="form-group">
+        <label for="title">Tóm tắt</label>
+        <input type="text" class="form-control" id="sub_title" placeholder="tóm tắt" value="{{ $post->sub_title ?? null }}">
+    </div>
+    <div class="form-group">
         <label for="type">Danh mục</label><br>
         <select name="type" id="type">
             <option value="">Chọn danh mục ...</option>
@@ -48,6 +52,7 @@
                     _method: 'put',
                     _token: '{{ csrf_token() }}',
                     title: $('#title').val(),
+                    sub_title: $('#sub_title').val(),
                     url: $('#url').val(),
                     type: $('#type').val(),
                     image: $('#image').val(),
