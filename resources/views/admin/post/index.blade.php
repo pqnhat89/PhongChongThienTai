@@ -53,10 +53,10 @@
                                 <td>{{ $v->title }}</td>
                                 <td nowrap>{{ $v->type }}</td>
                                 <td nowrap>
-                                    <button class="btn btn-sm btn-info">Xem</button>
-                                    <button class="btn btn-sm btn-warning postUpdate"
+                                    <button class="btn btn-info">Xem</button>
+                                    <button class="btn btn-warning postUpdate"
                                         data-url="{{ route('admin.post.update', ['id' => $v->id]) }}">Sửa</button>
-                                    <button class="btn btn-sm btn-danger postDelete" data-title="{{ $v->title }}"
+                                    <button class="btn btn-danger postDelete" data-title="{{ $v->title }}"
                                         data-url="{{ route('admin.post.delete', ['id' => $v->id]) }}">Xoá</button>
                                 </td>
                             </tr>

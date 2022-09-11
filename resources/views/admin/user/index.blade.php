@@ -48,11 +48,11 @@
                                 <td nowrap>{{ $v->email }}</td>
                                 <td nowrap>
                                     @if ((\app\Enums\UserRole::isSupper()) || (auth()->user()->id == $v->id))
-                                        <button class="btn btn-sm btn-warning userUpdate"
+                                        <button class="btn  btn-warning userUpdate"
                                             data-url="{{ route('admin.user.update', ['id' => $v->id]) }}">Sửa</button>
                                     @endif
                                     @if ((\app\Enums\UserRole::isSupper()) && ($v->role != \app\Enums\UserRole::SUPPER))
-                                        <button class="btn btn-sm btn-danger userDelete" data-name="{{ $v->name }}"
+                                        <button class="btn  btn-danger userDelete" data-name="{{ $v->name }}"
                                             data-url="{{ route('admin.user.delete', ['id' => $v->id]) }}">Xoá</button>
                                     @endif
                                 </td>

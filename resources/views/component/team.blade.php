@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-md-1">
                                 <label>&nbsp;</label>
-                                <a class="btn btn-sm btn-danger btn-block w-70 delete_row">x</a>
+                                <a class="btn  btn-danger btn-block w-70 delete_row">x</a>
                             </div>
                         </div>
                     @endforeach
@@ -75,7 +75,7 @@
                                 <p><img class="img-fluid" src="{{ $v->image }}" alt="card image"></p>
                                 <h4 class="card-title">{{ $v->name }}</h4>
                                 <p class="card-text">{{ $v->slogan }}</p>
-                                <a href="/" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                <a href="/" class="btn btn-primary "><i class="fa fa-plus"></i></a>
                             </div>
                         </div>
                     </div>

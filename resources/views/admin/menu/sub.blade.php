@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-md-1">
                             <label>&nbsp;</label><br>
-                            <a class="btn btn-sm btn-danger btn-block delete_row">Xoá</a>
+                            <a class="btn  btn-danger btn-block delete_row">Xoá</a>
                         </div>
                     </div>
                 @endforeach
