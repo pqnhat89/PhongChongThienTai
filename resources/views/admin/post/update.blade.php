@@ -5,7 +5,7 @@
         <input type="text" class="form-control" id="title" placeholder="Tiêu đề" value="{{ $post->title ?? null }}">
     </div>
     <div class="form-group">
-        <label for="title">Tóm tắt</label>
+        <label for="sub_title">Tóm tắt</label>
         <input type="text" class="form-control" id="sub_title" placeholder="tóm tắt" value="{{ $post->sub_title ?? null }}">
     </div>
     <div class="form-group">
@@ -22,6 +22,10 @@
     <div class="form-group">
         <label for="image">Ảnh</label>
         <input class="form-control ckfinder" id="image" type="text" placeholder="Ảnh" value="{{ $post->image ?? null }}">
+    </div>
+    <div class="form-group">
+        <label for="file">File đính kèm</label>
+        <input type="file" class="form-control" id="file">
     </div>
     <div class="form-group">
         <label for="content">Nội dung</label>
