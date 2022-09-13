@@ -29,7 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
     // post
     Route::get('/post', 'AdminController@postIndex')->name('admin.post.index');
     Route::get('/post/create', 'AdminController@postCreate')->name('admin.post.create');
-    Route::match(['get', 'put'], '/post/update/{id}', 'AdminController@postUpdate')->name('admin.post.update');
+    Route::match(['get', 'post', 'put'], '/post/update/{id}', 'AdminController@postUpdate')->name('admin.post.update');
     Route::delete('/post/delete/{id}', 'AdminController@postDelete')->name('admin.post.delete');
 
     // user

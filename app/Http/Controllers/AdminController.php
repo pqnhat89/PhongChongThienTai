@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\PostType;
 use App\Enums\UserRole;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -66,15 +66,26 @@ class AdminController extends Controller
         if ($request->isMethod('get')) {
             return view('admin.post.update', ['post' => $post->first()]);
         } else {
-            $data = [
-                'title' => $request->title,
-                'sub_title' => $request->sub_title,
-                'type' => $request->type,
-                'image' => $request->image,
-                'content' => $request->content,
-                'updated_at' => now(),
-                'updated_by' => Auth::user()->email
-            ];
+            $data = $request->only('title', 'sub_title', 'type', 'image', 'content');
+            $data['updated_at'] = now();
+            $data['updated_by'] = Auth::user()->email;
+
+            // upload file
+            $file = $request->file('file');
+            if ($file) {
+                // add new file
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $destinationPath = public_path() . '/files';
+                $file->move($destinationPath, $fileName);
+                $data['file'] = "$destinationPath/$fileName";
+
+                // remove old file
+                if ($request->id) {
+                    $oldFile = $post->first()->file ?? '';
+                    File::delete($oldFile);
+                }
+            }
+
             if ($request->id) {
                 $post->update($data);
             } else {
@@ -85,6 +96,7 @@ class AdminController extends Controller
                     ])
                 );
             }
+            return redirect()->back();
         }
     }
 

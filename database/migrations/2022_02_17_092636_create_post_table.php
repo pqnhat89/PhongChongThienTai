@@ -21,6 +21,7 @@ class CreatePostTable extends Migration
             $table->longText('content')->nullable();
             $table->string('image')->nullable();
             $table->string('type')->nullable();
+            $table->string('file')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
