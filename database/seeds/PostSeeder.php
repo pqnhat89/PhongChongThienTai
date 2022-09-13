@@ -1,28 +1,28 @@
 <?php
-	
-	use App\Enums\PostType;
-	use Illuminate\Database\Seeder;
-	use Illuminate\Support\Facades\DB;
-	
-	class PostSeeder extends Seeder
+
+use App\Enums\PostType;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class PostSeeder extends Seeder
+{
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
 	{
-		/**
-		 * Run the database seeds.
-		 *
-		 * @return void
-		 */
-		public function run()
-		{
-			$data = [];
-			$type = array_values(PostType::toArray());
-			foreach ($type as $value) {
-				for ($i = 1; $i <= 10; $i++) {
-					$data[] = [
-						'title' => $value . " $i",
-						'sub_title' => "Sáng nay (22/02), không khí lạnh ở phía Bắc đang tăng cường xuống phía Nam. Dự báo: Khoảng gần sáng và ngày mai (23/02), bộ phận không khí lạnh tăng cường này sẽ ảnh hưởng đến Thừa Thiên Huế.",
-						'image' => "/uploads/images/274455488_283587610545935_3250378910996779643_n.jpg",
-						'type' => $value,
-						'content' => "Sáng nay (22/02), không khí lạnh ở phía Bắc đang tăng cường xuống phía Nam.
+		$data = [];
+		$type = array_values(PostType::toArray());
+		foreach ($type as $value) {
+			for ($i = 1; $i <= 10; $i++) {
+				$data[] = [
+					'title' => $value . " $i",
+					'sub_title' => "Sáng nay (22/02), không khí lạnh ở phía Bắc đang tăng cường xuống phía Nam. Dự báo: Khoảng gần sáng và ngày mai (23/02), bộ phận không khí lạnh tăng cường này sẽ ảnh hưởng đến Thừa Thiên Huế.",
+					'image' => "/uploads/images/274455488_283587610545935_3250378910996779643_n.jpg",
+					'type' => $value,
+					'content' => "Sáng nay (22/02), không khí lạnh ở phía Bắc đang tăng cường xuống phía Nam.
 
 Dự báo: Khoảng gần sáng và ngày mai (23/02), bộ phận không khí lạnh tăng cường này sẽ ảnh hưởng đến Thừa Thiên Huế.
 
@@ -36,11 +36,13 @@ Nhiệt độ thấp nhất trong đợt rét này ở vùng đồng bằng và 
 
 Tin phát lúc: 9h30
 
-Nguồn: Đài KTTV tỉnh"
-					];
-				}
+Nguồn: Đài KTTV tỉnh",
+					'created_at' => today(),
+					'updated_at' => today(),
+				];
 			}
-			
-			DB::table('post')->insert($data);
 		}
+
+		DB::table('post')->insert($data);
 	}
+}

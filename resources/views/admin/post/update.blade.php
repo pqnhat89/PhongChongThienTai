@@ -30,7 +30,7 @@
             <label for="file">
                 File đính kèm: 
                 @if ($post->file ?? null)
-                    <a target="_blank" href="{{ $post->file ?? null }}">Tải file</a>
+                    <a target="_blank" href="{{ '/public/files/' . $post->file }}">Tải file</a>
                 @endif
             </label>
             <input type="file" class="form-control" id="file" name="file">

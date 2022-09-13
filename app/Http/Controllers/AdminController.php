@@ -53,7 +53,7 @@ class AdminController extends Controller
 
         // query
         $post = DB::table('post')->where($conditions)
-            ->orderBy('updated_at', 'desc')->simplePaginate(20);
+            ->orderBy('updated_at', 'desc')->paginate(20);
 
         return view('admin.post.index', [
             'post' => $post
@@ -77,12 +77,12 @@ class AdminController extends Controller
                 $fileName = time() . '_' . $file->getClientOriginalName();
                 $destinationPath = public_path() . '/files';
                 $file->move($destinationPath, $fileName);
-                $data['file'] = "$destinationPath/$fileName";
+                $data['file'] = "$fileName";
 
                 // remove old file
                 if ($request->id) {
                     $oldFile = $post->first()->file ?? '';
-                    File::delete($oldFile);
+                    File::delete("$destinationPath/$oldFile");
                 }
             }
 
