@@ -2,17 +2,17 @@
 /* CSS Document */
 
 /* ---------------------------------------------------------
-	
+
 	* Filename:				default.css
-	* Description: 			sets typography, basic grids, 
+	* Description: 			sets typography, basic grids,
 							and standard formstyles
 	* Version:				1.0.0 (2012-06-16)
 	* Author:				Ryan Martinez
-	
+
 	== INDEX ===============================================
-	
+
 	$__generic classes		classes used globally, should be at bottom to prevent semantic inheritance
-	
+
 ------------------------------------------------------------*/
 
 
@@ -399,7 +399,7 @@ li p {
     background: none repeat scroll 0 0 #E3E3E5;
 }
 .dnnTableHeader a,
-.dnnTableHeader input, 
+.dnnTableHeader input,
 .dnnTableHeader select{
     margin: 0;
 }
@@ -839,7 +839,7 @@ span.dnnSecondaryAction > a.dnnSecondaryAction {
 /* Action Button behind input */
 .dnnFormItem input[type="text"] + a.dnnPrimaryAction,
 .dnnFormItem input[type="text"] + a.dnnSecondaryAction,
-.dnnFormItem input[type="text"] + a.dnnTerriaryAction { 
+.dnnFormItem input[type="text"] + a.dnnTerriaryAction {
     margin-left: 5px;
 }
 
@@ -1111,7 +1111,7 @@ ul.dnnAdminTabNav {
     right: -5px;
     top: -5px;
 }
-/*	
+/*
 
 /*-------------------------------------*/
 /* FORM ITEMS
@@ -1761,7 +1761,7 @@ div.dnnTagsInput > div > input.dnnTagsInvalid {
     cursor: pointer;
     font-size: 12px;
     color: #90111A !important; /* dark red*/
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 /* DNN Auto Complete */
@@ -2642,7 +2642,7 @@ table.dnnASPGrid {
         padding: 4px 4px 4px 4px;
         vertical-align: middle;
         line-height: 120%;
-        text-align: center;    
+        text-align: center;
     }
 
     table.dnnPermissionsGrid tr.dnnGridItem td,
@@ -2668,7 +2668,7 @@ table.dnnASPGrid {
     }
 
     .dnnPermissionsGrid > .dnnFormItem label {
-        margin-right: 8px;        
+        margin-right: 8px;
         color: #777;
     }
 
@@ -2679,7 +2679,7 @@ table.dnnASPGrid {
         color: #777;
     }
 
-    .dnnPermissionsGrid > .dnnFormItem input {        
+    .dnnPermissionsGrid > .dnnFormItem input {
         margin-bottom: 0;
         height: 17px;
         color: #777;
@@ -2705,7 +2705,7 @@ table.dnnASPGrid {
 
     .dnnPermissionsGrid > .dnnFormItem {
         margin-bottom: 18px;
-        overflow: auto;     
+        overflow: auto;
     }
 
 .dnnGridHeader td, thead.dnnGridHeader th,  tr.dnnGridHeader th{
@@ -3269,7 +3269,7 @@ div.ModDNNLinksC .urlControl span.dnnRadiobutton {
 }
 
 /* used to collapse panes without any content in them */
-.DNNEmptyPane {
+.empty-panel {
     width: 0px;
 }
 
@@ -3277,11 +3277,11 @@ div.ModDNNLinksC .urlControl span.dnnRadiobutton {
 .Hidden {
     display: none;
 }
-.wordwrap { 
-   white-space: pre-wrap;      /* CSS3 */   
-   white-space: -moz-pre-wrap; /* Firefox */    
-   white-space: -pre-wrap;     /* Opera <7 */   
-   white-space: -o-pre-wrap;   /* Opera 7 */    
+.wordwrap {
+   white-space: pre-wrap;      /* CSS3 */
+   white-space: -moz-pre-wrap; /* Firefox */
+   white-space: -pre-wrap;     /* Opera <7 */
+   white-space: -o-pre-wrap;   /* Opera 7 */
    word-wrap: break-word;      /* IE */
 }
 /*Edit In Place Tool Bar Classes*/
@@ -3315,11 +3315,11 @@ div.ModDNNLinksC .urlControl span.dnnRadiobutton {
 }
 .eipbuttonbackimg{
 	width: 32px;
-	height: 32px; 
+	height: 32px;
 	cursor: pointer;
 	float:left;
 	background: url(../../../../../images/eip_toolbar.png) no-repeat;
-	
+
 }
 .eipbackimg.editMode .eipbuttonbackimg {
 	border-left: 1px solid #1f1f1f;
@@ -3451,8 +3451,8 @@ body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnRegistrationForm {
     width: 100%;
 	padding: 18px 0 0 0;
     margin: 0;
-    float: none;	
-	min-width: inherit !important;	
+    float: none;
+	min-width: inherit !important;
 }
 
 body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnForm{
@@ -3515,7 +3515,7 @@ body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnForm .dnnFormItem > inpu
     box-shadow: none;
     max-width: 100% !important;
 	margin-bottom: 18px;
-	min-width: 100% !important;	
+	min-width: 100% !important;
 }
 
 body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnForm .dnnFormItem > label#dnn_ctr_Login_Login_DNN_lblLogin{
@@ -3591,12 +3591,12 @@ body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnRegistrationForm .dnnFor
 }
 
 body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnRegistrationForm .dnnFormItem .password-strength-container span.min-length-text{
-	display: block;	
+	display: block;
 	margin: 5px 0 5px 8px;
 }
 
 body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnRegistrationForm .dnnFormItem .password-strength-container div.meter{
-	float: none;	
+	float: none;
 	width: 90%;
 	margin: 0 0 0 8px;
 }
@@ -3604,13 +3604,13 @@ body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnFormItem input.unmatched
 	background: none !important;
 }
 
-body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnRegistrationForm .dnnFormItem .password-strength-tooltip, 
+body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnRegistrationForm .dnnFormItem .password-strength-tooltip,
 body.mobileView.dnnFormPopup.dnnFormPopupMobileView .dnnRegistrationForm .dnnFormItem .confirm-password-tooltip{
 	display: none !important;
 }
 
 .mobileView .dnnFormPopup .ui-dialog-content, .mobileVie #iPopUp .ui-dialog-content {
-    max-height: none !important; 
+    max-height: none !important;
 }
 
 .mobileView .ui-widget-overlay {
@@ -3753,9 +3753,9 @@ html.mobileView {
     overflow: auto !important;
 }
 
-.mobileView .dnnFormPopup .ui-dialog-content, 
+.mobileView .dnnFormPopup .ui-dialog-content,
 .mobileView #iPopUp .ui-dialog-content {
-    max-height: none !important; 
+    max-height: none !important;
 }
 
 .dnnPlaceholder{ color: #666; }

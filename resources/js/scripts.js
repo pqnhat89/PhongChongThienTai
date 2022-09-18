@@ -74,8 +74,13 @@
 
     // Add more row
     $(".add_row").click(function () {
-        let clone = $(this).closest(".card-body").find(".row:first-child").clone();
-        clone.find("input").val("");
+        let clone = $(this).closest(".card-body").find(".row:first-child").clone(),
+            input = clone.find("input[type='text']"),
+            hidden = clone.find("input[type='hidden']");
+
+        hidden.remove();
+        input.val("");
+        input.attr("disabled", false);
         $(this).closest(".card-body").find(".form-input").append(clone);
     });
 

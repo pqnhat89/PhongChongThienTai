@@ -2,6 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head id="Head">
     @php $logo = \App\Helpers\Utils::getLogo() @endphp
+    @php $setting = \App\Helpers\Utils::getSetting() @endphp
+    @php $banner = \App\Services\BannerServices::getDefaultBanner() @endphp
+    @php $sidebarBanner = \App\Services\BannerServices::getSidebarBanner() @endphp
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,7 +90,7 @@
     <div class="hidden-xs">
         <div class="row" style=" margin-right: 0px; margin-left: 0px;">
             <div class="col-md-12"
-                 style="background-image: url( {{asset('/public/uploads/images/banner.png') }}); background-repeat: no-repeat; background-size: cover;">
+                 style="background-image: url( {{ isset($banner[\App\Enums\BannerTitle::TOP_HEADER]) ? asset('') .'/'. $banner[\App\Enums\BannerTitle::TOP_HEADER] : asset('/public/uploads/images/banner.png') }}); background-repeat: no-repeat; background-size: cover;">
                 <table style="width: 100%">
                     <tbody>
                     <tr>
@@ -96,12 +99,10 @@
                         </td>
                         <td style="text-align: left">
                             <p style="font-size: 22px; color: #0a64a4; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px;">
-                                UBND TỈNH ĐẮK NÔNG
+                                {{$setting[\App\Enums\Setting::HEADER1]}}
                             </p>
-                            <p class="banner-bch-text">BAN CHỈ HUY PHÒNG, CHỐNG THIÊN TAI VÀ TÌM KIẾM CỨU NẠN</p>
-                            <p style="font-size: 16px; color: #0a64a4; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px;">
-                                Dak Nong Provincial Commanding Commitee of Natural Disaster Prevention and Control,
-                                Search and Rescue</p>
+                            <p class="banner-bch-text">{{$setting[\App\Enums\Setting::HEADER2]}}</p>
+                            <p style="font-size: 16px; color: #0a64a4; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px;">{{$setting[\App\Enums\Setting::HEADER3]}}</p>
                         </td>
                     </tr>
                     <tr>
@@ -115,7 +116,7 @@
 
     <div>
         <nav class="navbar navbar-default">
-            <ul class="nav navbar-nav sm" data-smartmenus-id="16459200511787002">
+            <ul class="nav navbar-nav sm">
                 <li><a href="/">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         Trang chủ</a></li>
@@ -124,12 +125,10 @@
                         Giới thiệu</a></li>
                 <li class="dropdown">
                     <a href="/#" class="dropdown-toggle has-submenu"
-                       data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
-                       id="sm-16459200511787002-1" aria-controls="sm-16459200511787002-2">
+                       data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-sitemap" aria-hidden="true"></i>
                         Tổ chức bộ máy <span class="caret"></span></a>
-                    <ul class="dropdown-menu" id="sm-16459200511787002-2" role="group" aria-hidden="true"
-                        aria-labelledby="sm-16459200511787002-1" aria-expanded="false">
+                    <ul class="dropdown-menu" role="group" aria-hidden="true" aria-expanded="false">
                         <li><a href="{{route('structure')}}">Sơ đồ chung</a></li>
                         <li><a href="/#">Ban chỉ đạo TW về PCTT</a></li>
                         <li><a href="/#">Ban Chỉ huy PCTT và TKCN cấp Tỉnh</a></li>
@@ -139,12 +138,10 @@
                 </li>
                 <li class="dropdown">
                     <a href="/#" class="dropdown-toggle has-submenu"
-                       data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
-                       id="sm-16459200511787002-3" aria-controls="sm-16459200511787002-4">
+                       data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                         Tin tức</a>
-                    <ul class="dropdown-menu" id="sm-16459200511787002-4" role="group" aria-hidden="true"
-                        aria-labelledby="sm-16459200511787002-3" aria-expanded="false">
+                    <ul class="dropdown-menu" role="group" aria-hidden="true" aria-expanded="false">
 						<?php $postType = \App\Enums\PostType::toArray();?>
                         <li>
                             <a href="{{url('/the-loai') .'/'. array_search(\App\Enums\PostType::DBTT, $postType)}}">{{\App\Enums\PostType::DBTT}}</a>
@@ -172,11 +169,11 @@
         <main role="main">
             <div id="mainContent-inner">
                 <div class="row dnnpane">
-                    <div id="dnn_ContentPane" class="col-md-12 contentPane">
-                        <div class="DnnModule DnnModule-DNN_HTML DnnModule-353"><a name="353"></a>
-                            <div id="dnn_ctr353_ContentPane"><!-- Start_Module_353 -->
-                                <div id="dnn_ctr353_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
-                                    <div id="dnn_ctr353_HtmlModule_lblContent" class="Normal">
+                    <div class="col-md-12 contentPane">
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
                                         {{--                                            <div class="carousel slide" data-ride="carousel"--}}
                                         {{--                                                 id="carousel-example-generic"><!-- Indicators -->--}}
                                         {{--                                                <ol class="carousel-indicators">--}}
@@ -223,11 +220,11 @@
 
                                 </div><!-- End_Module_353 --></div>
                         </div>
-                        <div class="DnnModule DnnModule-DNN_HTML DnnModule-465"><a name="465"></a></div>
+                        <div></div>
                     </div>
                 </div>
                 <div class="row dnnpane">
-                    <div id="P2_25_3" class="col-md-3 col-xs-3 spacingTop">
+                    <div class="col-md-3 col-xs-3 spacingTop">
                         <div class="list-group" style="padding-top: 15px">
                             <a href="{{url('/the-loai') .'/'. array_search(\App\Enums\PostType::KHPA, $postType)}}"
                                class="list-group-item list-group-item-info"><strong>
@@ -371,56 +368,53 @@
                             </div>
                         </div>
 
-                        <div class="panel panel-primary">
-                            <div class="panel-heading"><strong>THỐNG KÊ TRUY CẬP</strong></div>
-                            <div class="panel-body" style="padding: 0">
-                                <div class="list-group" style="margin-bottom: 0px;">
-                                    <a href="/#" class="list-group-item">Đang online:
-                                        5</a>
-                                    <a href="/#" class="list-group-item">Tổng lượt
-                                        truy cập: 1.000</a>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="panel panel-primary">--}}
+{{--                            <div class="panel-heading"><strong>THỐNG KÊ TRUY CẬP</strong></div>--}}
+{{--                            <div class="panel-body" style="padding: 0">--}}
+{{--                                <div class="list-group" style="margin-bottom: 0px;">--}}
+{{--                                    <a href="/#" class="list-group-item">Đang online:--}}
+{{--                                        5</a>--}}
+{{--                                    <a href="/#" class="list-group-item">Tổng lượt--}}
+{{--                                        truy cập: 1.000</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
-                    <div id="dnn_P2_75_3" class="col-md-6 col-xs-6 spacingTop"
+                    <div class="col-md-6 col-xs-6 spacingTop"
                          style="padding-top: 15px; padding-right: 5px; padding-left: 5px;">
                         @yield('content')
                     </div>
-                    <div id="dnn_P2_75_4" class="col-md-3 col-xs-3 spacingTop" style="padding-top: 15px">
-                        <div class="DnnModule DnnModule-XemBaiViet DnnModule-427"><a name="427"></a>
+                    <div class="col-md-3 col-xs-3 spacingTop" style="padding-top: 15px">
+                        <div>
                             <div class="valid-404 SpacingBottom">
-                                <div id="dnn_ctr427_ContentPane" class=""><!-- Start_Module_427 -->
-                                    <div id="dnn_ctr427_ModuleContent" class="DNNModuleContent ModXemBaiVietC">
+                                <div><!-- Start_Module_427 -->
+                                    <div>
 
                                         <div class="panel panel-primary">
                                             <div class="panel-heading">
                                                 <h3 class="panel-title" style="font-size: 12px; font-weight: bold">
-                                                    <span id="dnn_ctr427_View_lbHeader">BAN CHỈ HUY PHÒNG CHỐNG THIÊN TAI VÀ TÌM KIẾM CỨU NẠN TỈNH ĐẮK NÔNG</span>
+                                                    <span>{{$setting[\App\Enums\Setting::SITE_NAME]}}</span>
                                                 </h3>
                                             </div>
                                             <div class="panel-body" style="padding: 10px; text-align: left;">
                                                 <div data-ft="{&quot;tn&quot;:&quot;C&quot;}" id="js_qu"
                                                      style="text-align: justify;">
                                                     <p><img alt=""
-                                                            src="{{ asset('/public/uploads/images/QRcode.png') }}"
+                                                            src="{{ isset($banner[\App\Enums\BannerTitle::QR_CODE]) ? asset('') .'/'. $banner[\App\Enums\BannerTitle::QR_CODE] : asset('public/uploads/images/QRcode.png') }}"
                                                             style="width: 300px; height: 276px;" title=""></p>
 
                                                     <p>&nbsp;</p>
 
                                                     <p>&nbsp;</p>
 
-                                                    <p><img alt=""
-                                                            src="{{ asset('/public/uploads/images/Phuon_3.jpg') }}"
-                                                            style="width: 300px; height: 569px;" title=""></p>
+                                                    @foreach($sidebarBanner as $val)
+                                                        <p><img alt=""
+                                                                src="{{ $val->image ?? '' }}"
+                                                                style="width: 300px; height: 569px;" title="{{$val->title ?? ''}}"></p>
+                                                        <p>&nbsp;</p>
 
-                                                    <p><img alt=""
-                                                            src="{{ asset('/public/uploads/images/Phuon_41.jpg') }}"
-                                                            style="width: 300px; height: 615px;" title=""></p>
-
-                                                    <p>&nbsp;</p>
-
-                                                    <p>&nbsp;</p>
+                                                        <p>&nbsp;</p>
+                                                    @endforeach
                                                 </div>
 
                                             </div>
@@ -435,17 +429,17 @@
                     </div>
                 </div>
                 <div class="row dnnpane">
-                    <div id="dnn_P2_25_1" class="col-md-4 spacingTop DNNEmptyPane"></div>
-                    <div id="dnn_P2_75_2" class="col-md-8 spacingTop DNNEmptyPane"></div>
+                    <div class="col-md-4 spacingTop empty-panel"></div>
+                    <div class="col-md-8 spacingTop empty-panel"></div>
                 </div>
 
                 <div class="row dnnpane">
-                    <div id="dnn_P3_33_1" class="col-md-4 spacingTop DNNEmptyPane"></div>
-                    <div id="dnn_P3_33_2" class="col-md-4 spacingTop DNNEmptyPane"></div>
-                    <div id="dnn_P3_33_3" class="col-md-4 spacingTop DNNEmptyPane"></div>
+                    <div class="col-md-4 spacingTop empty-panel"></div>
+                    <div class="col-md-4 spacingTop empty-panel"></div>
+                    <div class="col-md-4 spacingTop empty-panel"></div>
                 </div>
                 <div class="row dnnpane">
-                    <div id="P4_33_1" class="col-md-12 spacingTop">
+                    <div class="col-md-12 spacingTop">
                         <div class="panel panel-default">
                             <div class="panel-heading"><strong>LIÊN KẾT WEBSITE</strong></div>
                             <div class="panel-body">
@@ -462,7 +456,7 @@
                     </div>
                 </div>
                 <div class="row dnnpane">
-                    <div id="dnn_ContentPaneLower" class="col-md-12 contentPane spacingTop DNNEmptyPane"></div>
+                    <div id="dnn_ContentPaneLower" class="col-md-12 contentPane spacingTop empty-panel"></div>
                 </div>
             </div>
             <!-- /.mainContent-inner -->
@@ -476,11 +470,11 @@
         <div class="footer-above">
             <div class="container">
                 <div class="row dnnpane">
-                    <div id="dnn_footer_25_1" class="footer-col col-md-3 col-sm-6 DNNEmptyPane"></div>
-                    <div id="dnn_footer_25_2" class="footer-col col-md-3 col-sm-6 DNNEmptyPane"></div>
+                    <div class="footer-col col-md-3 col-sm-6 empty-panel"></div>
+                    <div class="footer-col col-md-3 col-sm-6 empty-panel"></div>
                     <div class="clearfix visible-sm"></div>
-                    <div id="dnn_footer_25_3" class="footer-col col-md-3 col-sm-6 DNNEmptyPane"></div>
-                    <div id="dnn_footer_25_4" class="footer-col col-md-3 col-sm-6 DNNEmptyPane"></div>
+                    <div class="footer-col col-md-3 col-sm-6 empty-panel"></div>
+                    <div class="footer-col col-md-3 col-sm-6 empty-panel"></div>
                 </div>
             </div>
         </div>
@@ -489,17 +483,15 @@
                 <div class="row dnnpane">
                     <div class="col-md-8">
                         <div style="font-size: 13px">
-                            <strong>BAN CHỈ HUY PHÒNG CHỐNG THIÊN TAI VÀ TÌM KIẾM CỨU NẠN TỈNH ĐẮK NÔNG</strong><br>
-                            Địa chỉ: XX XXX XXX – Phường XX- Tỉnh Đắk Nông<br>
-                            Điện thoại: 0234.3822519 - 0234.3849123<br>
-                            Fax: 0234.3824480<br>
-                            Email: chonglutbaotth@gmail.com ; bchpclbtkcn@daknong.gov.vn
+                            <strong>{{$setting[\App\Enums\Setting::SITE_NAME]}}</strong><br>
+                            Địa chỉ: {{$setting[\App\Enums\Setting::ADDRESS]}}<br>
+                            Điện thoại: {{$setting[\App\Enums\Setting::PHONE]}}<br>
+                            Fax: {{$setting[\App\Enums\Setting::FAX]}}<br>
+                            Email: {{$setting[\App\Enums\Setting::EMAIL]}}
                             <br>
                         </div>
                     </div>
                     <div class="col-md-4" style="text-align: right">
-                        <img src="{{ asset('public/uploads/images/logodwf.bmp') }}" style="height: 68px">
-                        <img src="{{ asset('public/uploads/images/logojica.png') }}">
                     </div>
                 </div>
             </div>
@@ -532,9 +524,5 @@
     });
 </script>
 <input name="ScrollTop" type="hidden" id="ScrollTop">
-<input name="__dnnVariable" type="hidden" id="__dnnVariable" autocomplete="off"
-       value="`{`__scdoff`:`1`,`sf_siteRoot`:`/`,`sf_tabId`:`20`}">
-<input name="__RequestVerificationToken" type="hidden"
-       value="LisLrZP6i1DuOipECquDCIQGfOQmon_EievN426ruIem1U8G3mgI14cO19YIlJCRT2cAng2">
 </body>
 </html>

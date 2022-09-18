@@ -12,11 +12,22 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        $name = ['logo', 'site_name', 'address', 'phone', 'fax', 'email'];
+        $name = [
+			'logo' => '',
+	        'site_name' => 'BAN CHỈ HUY PHÒNG CHỐNG THIÊN TAI VÀ TÌM KIẾM CỨU NẠN TỈNH ĐẮK NÔNG',
+	        'title_header1' => 'UBND TỈNH ĐẮK NÔNG',
+	        'title_header2' => 'BAN CHỈ HUY PHÒNG, CHỐNG THIÊN TAI VÀ TÌM KIẾM CỨU NẠN',
+	        'title_header3' => 'Dak Nong Provincial Commanding Commitee of Natural Disaster Prevention and Control, Search and Rescue',
+	        'address' => 'XX XXX XXX – Phường XX- Tỉnh Đắk Nông',
+	        'phone' => '0234.3822519 - 0234.3849123',
+	        'fax' => '0234.3824480',
+	        'email' => 'chonglutbaotth@gmail.com ; bchpclbtkcn@daknong.gov.vn'
+        ];
         $data = [];
-        foreach ($name as $v) {
+        foreach ($name as $key => $v) {
             $data[] = [
-                'name' => $v
+                'name' => $key,
+                'content' => $v,
             ];
         }
         DB::table('setting')->insert($data);
