@@ -13,8 +13,12 @@
                             </h3>
                         </div>
                         <div class="panel-body" style="padding: 10px; text-align: left;">
-                            <p style="text-align: justify;">{{$post->content}}</p>
-                            <p style="text-align: justify;">&nbsp;</p>
+                            {!! html_entity_decode($post->content) !!}
+                            @if($post->file)
+                                <p style="text-align: justify;">&nbsp;
+                                    <a href="{{url('/files') .'/'. $post->file}}">Tải file đính kèm</a>
+                                </p>
+                            @endif
 
                         </div>
                     </div>

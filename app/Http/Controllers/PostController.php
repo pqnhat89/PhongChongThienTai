@@ -27,7 +27,7 @@ class PostController extends Controller
     public function index($type): Renderable
     {
 		$postType = PostType::toArray();
-	    $posts = DB::table('post')->where('type', $postType[$type])->orderBy('id', 'DESC')->paginate(5);
+	    $posts = DB::table('post')->where('type', $postType[$type])->orderBy('id', 'DESC')->paginate(10);
 	    return view('front-end.post.index', ['posts' => $posts, 'type' => mb_strtoupper($postType[$type])]);
     }
 	
