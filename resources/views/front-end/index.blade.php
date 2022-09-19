@@ -204,7 +204,7 @@
                 <div>
                     <div>
                         <p><img alt=""
-                                src="{{ isset($banner[\App\Enums\BannerTitle::FOOTER_BANNER]) ? asset('') .'/'. $banner[\App\Enums\BannerTitle::FOOTER_BANNER] : asset('/public/uploads/images/banner_1000x150.png') }}"
+                                src="{{ isset($banner[\App\Enums\BannerTitle::FOOTER_BANNER]) ? asset('') . $banner[\App\Enums\BannerTitle::FOOTER_BANNER] : asset('/public/uploads/images/banner_1000x150.png') }}"
                                 style="width: 1000px; height: 150px;" title=""></p>
                         <p>&nbsp;</p>
                     </div>

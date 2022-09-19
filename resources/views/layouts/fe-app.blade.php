@@ -90,7 +90,7 @@
     <div class="hidden-xs">
         <div class="row" style=" margin-right: 0px; margin-left: 0px;">
             <div class="col-md-12"
-                 style="background-image: url( {{ isset($banner[\App\Enums\BannerTitle::TOP_HEADER]) ? asset('') .'/'. $banner[\App\Enums\BannerTitle::TOP_HEADER] : asset('/public/uploads/images/banner.png') }}); background-repeat: no-repeat; background-size: cover;">
+                 style="background-image: url( {{ isset($banner[\App\Enums\BannerTitle::TOP_HEADER]) ? asset($banner[\App\Enums\BannerTitle::TOP_HEADER]) : asset('/public/uploads/images/banner.png') }}); background-repeat: no-repeat; background-size: cover;">
                 <table style="width: 100%">
                     <tbody>
                     <tr>
@@ -400,7 +400,7 @@
                                                 <div data-ft="{&quot;tn&quot;:&quot;C&quot;}" id="js_qu"
                                                      style="text-align: justify;">
                                                     <p><img alt=""
-                                                            src="{{ isset($banner[\App\Enums\BannerTitle::QR_CODE]) ? asset('') .'/'. $banner[\App\Enums\BannerTitle::QR_CODE] : asset('public/uploads/images/QRcode.png') }}"
+                                                            src="{{ isset($banner[\App\Enums\BannerTitle::QR_CODE]) ? asset($banner[\App\Enums\BannerTitle::QR_CODE]) : asset('public/uploads/images/QRcode.png') }}"
                                                             style="width: 300px; height: 276px;" title=""></p>
 
                                                     <p>&nbsp;</p>
