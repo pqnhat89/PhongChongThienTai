@@ -3,13 +3,16 @@
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
     */
-(function ($) {
+(function ($)
+{
     "use strict";
     // Active ckfinder
-    $(document).on('click', '.ckfinder', function () {
+    $(document).on('click', '.ckfinder', function ()
+    {
         let el = $(this);
         CKFinder.popup({
-            selectActionFunction: function (fileUrl) {
+            selectActionFunction: function (fileUrl)
+            {
                 el.val(fileUrl);
             }
         });
@@ -29,37 +32,44 @@
     let token = $("meta[name='csrf-token']").attr("content");
 
     // Handle ajax
-    $(document).ajaxError(function (event, request, settings) {
+    $(document).ajaxError(function (event, request, settings)
+    {
         alert("Đã có lỗi xảy ra, vùi lòng F5 lại trang & thử lại.");
     });
-    $(document).ajaxSuccess(function (event, request, settings) {
-        if (request.responseJSON && request.responseJSON.reload) {
+    $(document).ajaxSuccess(function (event, request, settings)
+    {
+        if (request.responseJSON && request.responseJSON.reload)
+        {
             location.reload();
         }
-        alert("Lưu thành công.");
     });
 
     // Add active state to sidbar nav links
-    $("#layoutSidenav_nav .sb-sidenav a.nav-link").click(function () {
+    $("#layoutSidenav_nav .sb-sidenav a.nav-link").click(function ()
+    {
         $("#layoutSidenav_nav .sb-sidenav a.nav-link").removeClass("active");
         $(this).addClass("active");
     });
 
     var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
-    $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function () {
-        if (this.href === path) {
+    $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function ()
+    {
+        if (this.href === path)
+        {
             $(this).addClass("active");
         }
     });
 
     // Toggle the side navigation
-    $("#sidebarToggle").on("click", function (e) {
+    $("#sidebarToggle").on("click", function (e)
+    {
         e.preventDefault();
         $("body").toggleClass("sb-sidenav-toggled");
     });
 
     // Form submit
-    $(".form-ajax").submit(function (e) {
+    $(".form-ajax").submit(function (e)
+    {
         e.preventDefault();
         let url = $(this).attr('action');
         url = url ? url : window.location.href;
@@ -73,7 +83,8 @@
     });
 
     // Add more row
-    $(".add_row").click(function () {
+    $(".add_row").click(function ()
+    {
         let clone = $(this).closest(".card-body").find(".row:first-child").clone(),
             input = clone.find("input[type='text']"),
             hidden = clone.find("input[type='hidden']");
@@ -85,12 +96,14 @@
     });
 
     // Delete row
-    $(document).on("click", ".delete_row", function () {
+    $(document).on("click", ".delete_row", function ()
+    {
         $(this).closest(".row").remove();
     });
 
     // Handle form-toggle
-    $(".form-toggle").change(function () {
+    $(".form-toggle").change(function ()
+    {
         $(this).closest("form").toggleClass("disabled", !$(this).prop("checked"));
     });
 
