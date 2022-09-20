@@ -51,7 +51,7 @@
                                                      style="padding-right: 0px; padding-left: 0px;">
                                                     <img data-src="holder.js/200x200" class="img-thumbnail"
                                                          alt="200x200" style="width: 200px;"
-                                                         src="{{asset('/public') . $post->image}}"
+                                                         src="{{ url($post->image) }}"
                                                          data-holder-rendered="true">
                                                 </div>
                                                 <div class="col-md-9">

@@ -16,7 +16,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        {{ $title ?? $logo->content ?? 'Ban Chỉ huy PCTT và TKCN tỉnh Đắk Nông' }}
+        {{ $logo->content ?? 'Ban Chỉ huy PCTT và TKCN tỉnh Đắk Nông' }}
     </title>
 
     <link rel="SHORTCUT ICON" href="{{ $logo->image ?? '' }}" type="image/x-icon">
@@ -90,7 +90,7 @@
     <div class="hidden-xs">
         <div class="row" style=" margin-right: 0px; margin-left: 0px;">
             <div class="col-md-12"
-                 style="background-image: url( {{ isset($banner[\App\Enums\BannerTitle::TOP_HEADER]) ? asset($banner[\App\Enums\BannerTitle::TOP_HEADER]) : asset('/public/uploads/images/banner.png') }}); background-repeat: no-repeat; background-size: cover;">
+                 style="background-image: url( {{ isset($banner[\App\Enums\BannerTitle::TOP_HEADER]) ? url($banner[\App\Enums\BannerTitle::TOP_HEADER]) : asset('/public/uploads/images/banner.png') }}); background-repeat: no-repeat; background-size: cover;">
                 <table style="width: 100%">
                     <tbody>
                     <tr>
@@ -98,11 +98,11 @@
 
                         </td>
                         <td style="text-align: left">
-                            <p style="font-size: 22px; color: #0a64a4; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px;">
+                            <p style="font-size: 22px; color: #D82525; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px; font-family: cursive;">
                                 {{$setting[\App\Enums\Setting::HEADER1]}}
                             </p>
-                            <p class="banner-bch-text">{{$setting[\App\Enums\Setting::HEADER2]}}</p>
-                            <p style="font-size: 16px; color: #0a64a4; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px;">{{$setting[\App\Enums\Setting::HEADER3]}}</p>
+                            <p class="banner-bch-text" style="color: #D82525;">{{$setting[\App\Enums\Setting::HEADER2]}}</p>
+                            <p style="font-size: 18px; color: #D82525; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px; font-family: cursive;">{{$setting[\App\Enums\Setting::HEADER3]}}</p>
                         </td>
                     </tr>
                     <tr>
@@ -174,46 +174,6 @@
                             <div>
                                 <div>
                                     <div>
-                                        {{--                                            <div class="carousel slide" data-ride="carousel"--}}
-                                        {{--                                                 id="carousel-example-generic"><!-- Indicators -->--}}
-                                        {{--                                                <ol class="carousel-indicators">--}}
-                                        {{--                                                    <li class="active" data-slide-to="0"--}}
-                                        {{--                                                        data-target="#carousel-example-generic">&nbsp;--}}
-                                        {{--                                                    </li>--}}
-                                        {{--                                                    <li data-slide-to="1" data-target="#carousel-example-generic">--}}
-                                        {{--                                                        &nbsp;--}}
-                                        {{--                                                    </li>--}}
-                                        {{--                                                    <li data-slide-to="2" data-target="#carousel-example-generic">--}}
-                                        {{--                                                        &nbsp;--}}
-                                        {{--                                                    </li>--}}
-                                        {{--                                                    <li data-slide-to="3" data-target="#carousel-example-generic">--}}
-                                        {{--                                                        &nbsp;--}}
-                                        {{--                                                    </li>--}}
-                                        {{--                                                    <li data-slide-to="4" data-target="#carousel-example-generic">--}}
-                                        {{--                                                        &nbsp;--}}
-                                        {{--                                                    </li>--}}
-                                        {{--                                                </ol>--}}
-                                        {{--                                                <!-- Wrapper for slides -->--}}
-
-                                        {{--                                                <div class="carousel-inner" role="listbox">--}}
-                                        {{--                                                    <div class="item"><img--}}
-                                        {{--                                                                src="{{ asset('/public/uploads/images/Bangzon_2.jpg') }}">--}}
-                                        {{--                                                        <!-- Controls --></div>--}}
-
-                                        {{--                                                    <div class="item"><img--}}
-                                        {{--                                                                src="{{ asset('/public/uploads/images/Bangzon_3_1.jpg') }}">--}}
-                                        {{--                                                        <!-- Controls --></div>--}}
-
-                                        {{--                                                    <div class="item"><img--}}
-                                        {{--                                                                src="{{ asset('/public/uploads/images/Bangzon_5.jpg') }}">--}}
-                                        {{--                                                        <!-- Controls --></div>--}}
-
-                                        {{--                                                    <div class="item"><img--}}
-                                        {{--                                                                src="{{ asset('/public/uploads/images/Bangzon_4.jpg') }}">--}}
-                                        {{--                                                        <!-- Controls --></div>--}}
-                                        {{--                                                </div>--}}
-                                        {{--                                            </div>--}}
-
                                         <p>&nbsp;</p>
 
                                     </div>
@@ -400,7 +360,7 @@
                                                 <div data-ft="{&quot;tn&quot;:&quot;C&quot;}" id="js_qu"
                                                      style="text-align: justify;">
                                                     <p><img alt=""
-                                                            src="{{ isset($banner[\App\Enums\BannerTitle::QR_CODE]) ? asset($banner[\App\Enums\BannerTitle::QR_CODE]) : asset('public/uploads/images/QRcode.png') }}"
+                                                            src="{{ isset($banner[\App\Enums\BannerTitle::QR_CODE]) ? url($banner[\App\Enums\BannerTitle::QR_CODE]) : asset('public/uploads/images/QRcode.png') }}"
                                                             style="width: 300px; height: 276px;" title=""></p>
 
                                                     <p>&nbsp;</p>
@@ -409,8 +369,8 @@
 
                                                     @foreach($sidebarBanner as $val)
                                                         <p><img alt=""
-                                                                src="{{ $val->image ?? '' }}"
-                                                                style="width: 300px; height: 569px;" title="{{$val->title ?? ''}}"></p>
+                                                                src="{{ $val->image ? url($val->image) : '' }}"
+                                                                style="width: 300px; height: 569px;" title="{{$val->title ? url($val->title) : ''}}"></p>
                                                         <p>&nbsp;</p>
 
                                                         <p>&nbsp;</p>

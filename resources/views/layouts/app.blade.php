@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        {{ $title ?? $logo->content ?? '' }}
+        {{ $logo->content ?? 'Ban Chỉ huy PCTT và TKCN tỉnh Đắk Nông' }}
     </title>
 
     <link rel="SHORTCUT ICON" href="{{ $logo->image ?? '' }}" type="image/x-icon">
