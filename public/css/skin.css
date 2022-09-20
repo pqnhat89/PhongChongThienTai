@@ -658,7 +658,7 @@ a.cta-button:hover, button.cta-button:hover {
 }
 
 #topHeader {
-    background: #383838;
+    background: #0A64A4;
     -moz-box-shadow: 1px 50px 100px 0 #cacaca;
     -webkit-box-shadow: 1px 50px 100px 0 #cacaca;
     box-shadow: 1px 50px 100px 0 #cacaca;
@@ -1182,7 +1182,7 @@ footer .footer-col {
 }
 
 footer .footer-below {
-    background-color: #383838;
+    background-color: #0c62a1;
     padding: 15px 0
 }
 

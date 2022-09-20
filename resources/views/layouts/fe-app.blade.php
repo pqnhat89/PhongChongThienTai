@@ -93,7 +93,7 @@
 {{-- header --}}
 <div id="siteWrapper" style="position: relative;">
     <button onclick="topFunction()" id="myBtn" title="Lên đầu trang"><i class="fa fa-arrow-up fa-2x"></i></button>
-    <a href="tel:{{str_replace('.', '', $setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805')}}" id="hot-line" title="{{$setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805'}}"><i class="fa fa-phone fa-2x"></i>
+    <a href="tel:{{str_replace('.', '', $setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805')}}" id="hot-line" title="{{$setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805'}}"><i class="fa fa-phone fa-2x"></i></a>
     <!-- UserControlPanel  -->
     <div id="topHeader">
         <div>
@@ -459,23 +459,12 @@
 
     <!-- Footer -->
     <footer role="contentinfo">
-        <div class="footer-above">
-            <div class="container">
-                <div class="row dnnpane">
-                    <div class="footer-col col-md-3 col-sm-6 empty-panel"></div>
-                    <div class="footer-col col-md-3 col-sm-6 empty-panel"></div>
-                    <div class="clearfix visible-sm"></div>
-                    <div class="footer-col col-md-3 col-sm-6 empty-panel"></div>
-                    <div class="footer-col col-md-3 col-sm-6 empty-panel"></div>
-                </div>
-            </div>
-        </div>
         <div class="footer-below">
             <div class="container">
                 <div class="row dnnpane">
                     <div class="col-md-8">
-                        <div style="font-size: 13px">
-                            <strong>{{$setting[\App\Enums\Setting::SITE_NAME]}}</strong><br>
+                        <div style="font-size: 15px; color: #fff; font-family: system-ui; line-height: 1.7;">
+                            <strong>{{mb_strtoupper($setting[\App\Enums\Setting::SITE_NAME])}}</strong><br>
                             Địa chỉ: {{$setting[\App\Enums\Setting::ADDRESS]}}<br>
                             Điện thoại: {{$setting[\App\Enums\Setting::PHONE]}}<br>
                             Fax: {{$setting[\App\Enums\Setting::FAX]}}<br>
@@ -489,12 +478,9 @@
             </div>
         </div>
     </footer>
-
 </div>
 <!-- /.SiteWrapper -->
 
-
-<link href="{{ asset('font/css/font-awesome.min.css') }}" rel="stylesheet">
 
 <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
@@ -509,6 +495,7 @@
         </div>
     </div>
 </div>
+<input name="ScrollTop" type="hidden" id="ScrollTop">
 <script>
     $("img").on("click", function () {
         $('#imagepreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link
