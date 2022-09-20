@@ -15,5 +15,6 @@ class Setting extends Enum
     const PHONE = 'phone';
     const FAX = 'fax';
     const EMAIL = 'email';
+    const HOTLINE = 'hotline';
 
 }

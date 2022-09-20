@@ -59,9 +59,41 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+<style>
+    #myBtn, #hot-line  {
+        display: none;
+        position: fixed;
+        right: 19%;
+        z-index: 99;
+        font-size: 10px;
+        border: none;
+        outline: none;
+        background-color: #D82525;
+        color: white;
+        cursor: pointer;
+        padding: 12px 15px;
+        border-radius: 4px;
+        width: 50px;
+        width: 50px;
+    }
+    #myBtn {
+        bottom: 10px;
+    }
+    #hot-line {
+        bottom: 70px;
+    }
+
+
+    #myBtn:hover, #hot-line:hover {
+        background-color: #337AB7;
+    }
+
+</style>
 <body id="Body" data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="" cz-shortcut-listen="true">
 {{-- header --}}
-<div id="siteWrapper">
+<div id="siteWrapper" style="position: relative;">
+    <button onclick="topFunction()" id="myBtn" title="Lên đầu trang"><i class="fa fa-arrow-up fa-2x"></i></button>
+    <a href="tel:{{str_replace('.', '', $setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805')}}" id="hot-line" title="{{$setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805'}}"><i class="fa fa-phone fa-2x"></i>
     <!-- UserControlPanel  -->
     <div id="topHeader">
         <div>
@@ -90,7 +122,7 @@
     <div class="hidden-xs">
         <div class="row" style=" margin-right: 0px; margin-left: 0px;">
             <div class="col-md-12"
-                 style="background-image: url( {{ isset($banner[\App\Enums\BannerTitle::TOP_HEADER]) ? url($banner[\App\Enums\BannerTitle::TOP_HEADER]) : asset('/public/uploads/images/banner.png') }}); background-repeat: no-repeat; background-size: cover;">
+                 style="background-image: url( {{ isset($banner[\App\Enums\BannerTitle::TOP_HEADER]) ? url($banner[\App\Enums\BannerTitle::TOP_HEADER]) : url('/public/uploads/images/PCTTDN.jpg') }}); background-repeat: no-repeat; background-size: cover;">
                 <table style="width: 100%">
                     <tbody>
                     <tr>
@@ -483,6 +515,29 @@
         $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
     });
 </script>
-<input name="ScrollTop" type="hidden" id="ScrollTop">
+<script>
+    // Get the button
+    let mybutton = document.getElementById("myBtn");
+    let hotLine = document.getElementById("hot-line");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+            hotLine.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+            hotLine.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
 </body>
 </html>

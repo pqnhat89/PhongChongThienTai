@@ -17,7 +17,7 @@
 				[
 					'title' => BannerTitle::TOP_HEADER,
 					'description' => 'Banner đầu trang',
-					'image' => '/public/uploads/images/banner.png',
+					'image' => '/public/uploads/images/PCTTDN.jpg',
 					'created_at' => today(),
 					'updated_at' => today(),
 				],

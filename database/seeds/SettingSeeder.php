@@ -21,7 +21,8 @@ class SettingSeeder extends Seeder
 	        'address' => 'XX XXX XXX – Phường XX- Tỉnh Đắk Nông',
 	        'phone' => '0234.3822519 - 0234.3849123',
 	        'fax' => '0234.3824480',
-	        'email' => 'chonglutbaotth@gmail.com ; bchpclbtkcn@daknong.gov.vn'
+	        'email' => 'chonglutbaotth@gmail.com ; bchpclbtkcn@daknong.gov.vn',
+	        'hotline' => '02613.546.805',
         ];
         $data = [];
         foreach ($name as $key => $v) {
