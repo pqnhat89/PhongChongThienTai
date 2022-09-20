@@ -20,7 +20,7 @@ class PostSeeder extends Seeder
 				$data[] = [
 					'title' => $value . " $i",
 					'sub_title' => "Sáng nay (22/02), không khí lạnh ở phía Bắc đang tăng cường xuống phía Nam. Dự báo: Khoảng gần sáng và ngày mai (23/02), bộ phận không khí lạnh tăng cường này sẽ ảnh hưởng đến Thừa Thiên Huế.",
-					'image' => "/uploads/images/274455488_283587610545935_3250378910996779643_n.jpg",
+					'image' => "/public/uploads/images/274455488_283587610545935_3250378910996779643_n.jpg",
 					'type' => $value,
 					'content' => "Sáng nay (22/02), không khí lạnh ở phía Bắc đang tăng cường xuống phía Nam.
 
