@@ -45,7 +45,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="/">
             @if ($logo)
-                <img class="logo" src="{{ $logo->image }}" title="{{ $logo->content }}">
+                <img class="logo" src="{{ $logo->image }}" title="{{ $logo->content }}" style="max-height:100%">
             @else
                 {{ config('app.name', 'Laravel') }}
             @endif
