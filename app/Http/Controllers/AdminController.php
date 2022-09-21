@@ -96,13 +96,14 @@ class AdminController extends Controller
                     ])
                 );
             }
-            return redirect()->back();
+            return redirect()->back()->withErrors(['Cập nhật thành công.']);
         }
     }
 
     public function postDelete(Request $request)
     {
         DB::table('post')->where('id', $request->id)->delete();
+        return redirect()->back()->withErrors(['Cập nhật thành công.']);
     }
 
     /**

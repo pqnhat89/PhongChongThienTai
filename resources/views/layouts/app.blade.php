@@ -67,9 +67,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-fw"></i></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="#">Activity Log</a>
-                    <div class="dropdown-divider"></div>
+                    {{-- <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Activity Log</a> --}}
+                    {{-- <div class="dropdown-divider"></div> --}}
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Logout
@@ -109,4 +109,14 @@
         </div>
     </div>
 </body>
+
+<script>
+    @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+            alert('{{ $error }}');
+            @break;
+        @endforeach
+    @endif
+</script>
+
 </html>

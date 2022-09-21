@@ -52,6 +52,7 @@
                     currentpassword: $('#currentpassword').val()
                 },
                 success: function () {
+                    alert('Cập nhật thành công.');
                     // location.reload();
                 },
                 error: function (res) {

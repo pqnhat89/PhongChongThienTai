@@ -93,6 +93,7 @@
 
     $('.postDelete').click(function () {
         if (confirm("Xóa " + $(this).data('title') + " ?")) {
+            let tr = $(this).closest('tr');
             $.ajax({
                 method: 'post',
                 url: $(this).data('url'),
@@ -101,7 +102,8 @@
                     _method: 'delete'
                 },
                 success: function () {
-                    location.reload();
+                    alert('Xoá bài viết thành công.');
+                    tr.remove();
                 }
             });
         }

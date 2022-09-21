@@ -90,6 +90,7 @@
 
     $('.userDelete').click(function () {
         if (confirm("Xóa " + $(this).data('name') + " ?")) {
+            let tr = $(this).closest('tr');
             $.ajax({
                 method: 'post',
                 url: $(this).data('url'),
@@ -98,7 +99,8 @@
                     _method: 'delete'
                 },
                 success: function () {
-                    location.reload();
+                    alert('Xoá người dùng thành công.');
+                    tr.remove();
                 },
                 error: function (res) {
                     alert(res.responseText);

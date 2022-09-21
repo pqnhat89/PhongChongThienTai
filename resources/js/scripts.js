@@ -78,7 +78,11 @@
         $.ajax({
             method: "POST",
             url: url,
-            data: data
+            data: data,
+            success: function ()
+            {
+                alert('Cập nhật thành công.');
+            }
         });
     });
 
