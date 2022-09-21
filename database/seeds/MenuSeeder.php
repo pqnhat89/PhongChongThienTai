@@ -23,16 +23,16 @@ class MenuSeeder extends Seeder
         }
         DB::table('menu')->insert($data);
 
-        $data = [];
-        $menu = DB::table('menu')->get();
-        foreach ($menu as $k => $v) {
-            $data[] = [
-                'menu_id' => $v->id,
-                'title' => "Sub Menu " . $v->id,
-                'url' => "#$k",
-                'order' => $k
-            ];
-        }
-        DB::table('submenu')->insert($data);
+        // $data = [];
+        // $menu = DB::table('menu')->get();
+        // foreach ($menu as $k => $v) {
+        //     $data[] = [
+        //         'menu_id' => $v->id,
+        //         'title' => "Sub Menu " . $v->id,
+        //         'url' => "#$k",
+        //         'order' => $k
+        //     ];
+        // }
+        // DB::table('submenu')->insert($data);
     }
 }

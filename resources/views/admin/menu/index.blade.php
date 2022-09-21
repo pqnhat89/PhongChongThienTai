@@ -6,7 +6,7 @@
     <div class="card shadow-lg">
         <div class="card-header">
             <h3 class="text-center font-weight-light">
-                Menu Cha
+                Menu
             </h3>
         </div>
         <div class="card-body">
@@ -41,18 +41,18 @@
                         </div>
                         <div class="col-md-2">
                             <label>&nbsp;</label><br>
-                            <a class="btn  btn-primary" href="{{ route('admin.menu.sub', ['id' => $v->id ?? null]) }}">Tạo Menu con</a>
+                            {{-- <a class="btn  btn-primary" href="{{ route('admin.menu.sub', ['id' => $v->id ?? null]) }}">Tạo Menu con</a> --}}
                             <a class="btn  btn-danger delete_row">Xoá</a>
                         </div>
                     </div>
                 @endforeach
             </div>
             <div class="text-right">
-                <a class="btn btn-primary add_row">Thêm Menu Cha</a>
+                <a class="btn btn-primary add_row">Thêm Menu</a>
             </div>
         </div>
         <div class="card-footer text-center">
-            <button type="submit" class="btn btn-primary">Lưu Menu Cha</button>
+            <button type="submit" class="btn btn-primary">Lưu Menu</button>
         </div>
     </div>
 </form>
