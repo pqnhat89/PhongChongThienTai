@@ -482,7 +482,7 @@
 <!-- /.SiteWrapper -->
 
 
-<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="imagemodal" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
