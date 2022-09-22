@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserRole;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -292,5 +293,83 @@ class AdminController extends Controller
             DB::table('submenu')->where('menu_id', $request->id)->delete();
             DB::table('submenu')->insert($data);
         }
+    }
+
+    /**
+     * SCHEDULTE
+     */
+    public function scheduleIndex(Request $request)
+    {
+        // get condition
+        $conditions = [];
+        if ($request->name) {
+            $conditions[] = ['name', 'like', '%' . $request->name . '%'];
+        }
+        if ($request->from) {
+            $conditions[] = ['from', '>=',  Carbon::createFromFormat('d/m/Y', $request->from)->startOfDay()];
+        }
+        if ($request->to) {
+            $conditions[] = ['to', '<=',  Carbon::createFromFormat('d/m/Y', $request->to)->endOfDay()];
+        }
+
+        // query
+        $schedule = DB::table('schedule')
+            ->where($conditions)
+            ->select(
+                '*',
+                DB::raw('DATE_FORMAT(`from`, "%d/%m/%Y") as fromDate'),
+                DB::raw('DATE_FORMAT(`from`, "%H") as fromHour'),
+                DB::raw('DATE_FORMAT(`to`, "%d/%m/%Y") as toDate'),
+                DB::raw('DATE_FORMAT(`to`, "%H") as toHour')
+            )
+            ->orderBy('id', 'desc')
+            ->simplePaginate(20);
+
+        $leader = DB::table('schedule')
+            ->select('name')
+            ->groupBy('name')
+            ->get();
+
+        return view('admin.schedule.index', [
+            'schedule' => $schedule,
+            'leader' => $leader,
+        ]);
+    }
+
+    public function scheduleUpdate(Request $request)
+    {
+        $schedule = DB::table('schedule')->where('id', $request->id);
+        if ($request->isMethod('get')) {
+            return view('admin.schedule.update', [
+                'schedule' => $schedule
+                    ->select(
+                        '*',
+                        DB::raw('DATE_FORMAT(`from`, "%d/%m/%Y") as fromDate'),
+                        DB::raw('DATE_FORMAT(`from`, "%H") as fromHour'),
+                        DB::raw('DATE_FORMAT(`to`, "%d/%m/%Y") as toDate'),
+                        DB::raw('DATE_FORMAT(`to`, "%H") as toHour')
+                    )
+                    ->first()
+            ]);
+        } else {
+            $data = [
+                'name' => $request->name,
+                'from' => Carbon::createFromFormat('d/m/Y H', $request->from),
+                'to' => Carbon::createFromFormat('d/m/Y H', $request->to),
+                'content' => $request->content,
+            ];
+            if ($request->id) {
+                // update
+                $schedule->update($data);
+            } else {
+                // insert
+                DB::table('schedule')->insert($data);
+            }
+        }
+    }
+
+    public function scheduleDelete(Request $request)
+    {
+        DB::table('schedule')->where('id', $request->id)->delete();
     }
 }

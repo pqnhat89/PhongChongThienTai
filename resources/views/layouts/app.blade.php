@@ -18,6 +18,8 @@
     {{-- Plugins --}}
     <script src="{{ asset('/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('/js/moment-with-locales.min.js')}}"></script>
+    <script src="{{ asset('/js/bootstrap-datetimepicker.min.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}"></script>
@@ -29,6 +31,7 @@
     <!-- Styles -->
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap-theme.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">

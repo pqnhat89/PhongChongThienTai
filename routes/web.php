@@ -47,4 +47,10 @@ Route::group(['prefix' => 'admin'], function () {
     // menu
     Route::match(['get', 'post'], '/menu', 'AdminController@menu')->name('admin.menu.index');
     Route::match(['get', 'post'], '/menu/{id}', 'AdminController@submenu')->name('admin.menu.sub');
+
+    // schedule
+    Route::get('/schedule', 'AdminController@scheduleIndex')->name('admin.schedule.index');
+    Route::get('/schedule/create', 'AdminController@scheduleCreate')->name('admin.schedule.create');
+    Route::match(['get', 'put'], '/schedule/update/{id}', 'AdminController@scheduleUpdate')->name('admin.schedule.update');
+    Route::delete('/schedule/delete/{id}', 'AdminController@scheduleDelete')->name('admin.schedule.delete');
 });

@@ -17,6 +17,10 @@
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
                 Người dùng
             </a>
+            <a class="nav-link" href="{{ route('admin.schedule.index') }}">
+                <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
+                Lịch công tác
+            </a>
             <a class="nav-link" href="{{ route('admin.setting.index') }}">
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
                 Cài đặt khác
