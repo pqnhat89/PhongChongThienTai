@@ -327,14 +327,6 @@
                                        class="list-group-item"><strong>
                                             <i class="fa fa-globe" aria-hidden="true"></i>
                                             Ban Chỉ đạo TW về PCTT</strong></a>
-                                    <a target="_blank" href="https://quanlytau.ais.vishipel.vn/"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Hệ thống theo dõi quản lý tàu</strong></a>
-                                    <a target="_blank" href="http://vhlh.wru.vn/boat-connection/boat-operation#"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Phần mềm hiển thị thông tin tàu cá</strong></a>
                                     <a target="_blank" href="https://earth.nullschool.net/"
                                        class="list-group-item"><strong>
                                             <i class="fa fa-globe" aria-hidden="true"></i>
@@ -429,23 +421,6 @@
                     <div class="col-md-4 spacingTop empty-panel"></div>
                     <div class="col-md-4 spacingTop empty-panel"></div>
                     <div class="col-md-4 spacingTop empty-panel"></div>
-                </div>
-                <div class="row dnnpane">
-                    <div class="col-md-12 spacingTop">
-                        <div class="panel panel-default">
-                            <div class="panel-heading"><strong>LIÊN KẾT WEBSITE</strong></div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <a href="http://www.nchmf.gov.vn/web/vi-VN/43/Default.aspx"
-                                           title="Khí tượng thủy văn TW">Khí tượng thủy văn TW</a>
-                                    </div>
-                                    ...
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
                 <div class="row dnnpane">
                     <div id="dnn_ContentPaneLower" class="col-md-12 contentPane spacingTop empty-panel"></div>

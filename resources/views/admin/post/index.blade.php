@@ -53,7 +53,7 @@
                                 <td>{{ $v->title }}</td>
                                 <td nowrap>{{ $v->type }}</td>
                                 <td nowrap>
-                                    <button class="btn btn-info">Xem</button>
+                                    <a href="{{url('/xem') .'/'. $v->id}}" target="_blank"><button class="btn btn-info">Xem</button></a>
                                     <button class="btn btn-warning postUpdate"
                                         data-url="{{ route('admin.post.update', ['id' => $v->id]) }}">Sửa</button>
                                     <button class="btn btn-danger postDelete" data-title="{{ $v->title }}"
