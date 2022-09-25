@@ -62,28 +62,5 @@
                 format: 'DD/MM/YYYY'
             });
         });
-
-        $(document).on('click', '.modal #save', function () {
-            // send
-            $.ajax({
-                method: 'post',
-                url: $(this).data('url'),
-                data: {
-                    _method: 'put',
-                    _token: '{{ csrf_token() }}',
-                    name: $('#name').val(),
-                    from: $('#from').val() + ' ' + $('#fromHour').val(),
-                    to: $('#to').val() + ' ' + $('#toHour').val(),
-                    content: $('#content').val()
-                },
-                success: function () {
-                    alert('Cập nhật thành công.');
-                    location.reload();
-                },
-                error: function (res) {
-                    alert(res.responseText);
-                }
-            });
-        });
     </script>
 </div>

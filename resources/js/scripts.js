@@ -34,7 +34,7 @@
     // Handle ajax
     $(document).ajaxError(function (event, request, settings)
     {
-        alert("Đã có lỗi xảy ra, vùi lòng F5 lại trang & thử lại.");
+        modalAlert("Đã có lỗi xảy ra, vùi lòng F5 lại trang & thử lại.");
     });
     $(document).ajaxSuccess(function (event, request, settings)
     {
@@ -81,7 +81,7 @@
             data: data,
             success: function ()
             {
-                alert('Cập nhật thành công.');
+                modalAlert('Cập nhật thành công.');
             }
         });
     });

@@ -75,7 +75,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+<div class="modal fade" id="schedule" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             ...
@@ -99,31 +99,62 @@
         $.ajax({
             url: $(this).data('url'),
             success: function (response) {
-                $('.modal .modal-content').html('').html(response);
-                $('.modal').modal();
+                $('.modal#schedule .modal-content').html('').html(response);
+                $('.modal#schedule').modal();
             }
         });
     });
 
+    $(document).on('click', '.modal#schedule #save', function () {
+        // send
+        $.ajax({
+            method: 'post',
+            url: $(this).data('url'),
+            data: {
+                _method: 'put',
+                _token: '{{ csrf_token() }}',
+                name: $('#name').val(),
+                from: $('#from').val() + ' ' + $('#fromHour').val(),
+                to: $('#to').val() + ' ' + $('#toHour').val(),
+                content: $('#content').val()
+            },
+            success: function () {
+                modalReload = true;
+                modalAlert('Cập nhật thành công.');
+            },
+            error: function (res) {
+                modalAlert(res.responseText);
+            }
+        });
+    });
+
+
     $('.scheduleDelete').click(function () {
-        if (confirm("Xóa lịch công tác của " + $(this).data('name') + " ?")) {
-            let tr = $(this).closest('tr');
-            $.ajax({
-                method: 'post',
-                url: $(this).data('url'),
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    _method: 'delete'
-                },
-                success: function () {
-                    alert('Xoá lịch công tác thành công.');
-                    tr.remove();
-                },
-                error: function (res) {
-                    alert(res.responseText);
-                }
-            });
-        }
+        let el = $(this);
+        let tr = $(this).closest('tr');
+        tr.addClass('bg-warning');
+        setTimeout(function ()
+        {
+            if (confirm("Xóa lịch công tác của " + $(el).data('name') + " ?")) {
+                $.ajax({
+                    method: 'post',
+                    url: $(el).data('url'),
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        _method: 'delete'
+                    },
+                    success: function () {
+                        modalAlert('Xoá lịch công tác thành công.');
+                        tr.remove();
+                    },
+                    error: function (res) {
+                        modalAlert(res.responseText);
+                    }
+                });
+            } else {
+                tr.removeClass('bg-warning');
+            }
+        }, 100);
     });
 </script>
 

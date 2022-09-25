@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+<div class="modal fade" id="user" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             ...
@@ -82,31 +82,72 @@
         $.ajax({
             url: $(this).data('url'),
             success: function (response) {
-                $('.modal .modal-content').html('').html(response);
-                $('.modal').modal();
+                $('.modal#user .modal-content').html('').html(response);
+                $('.modal#user').modal();
+            }
+        });
+    });
+
+    $(document).on('click', '.modal #save', function () {
+        // validation
+        if (!$('#currentpassword').val()) {
+            modalAlert('Vui lòng Xác nhận: Nhập mật khẩu hiện tại của bạn!');
+            return false;
+        }
+        if ($('#newpassword').val() != $('#renewpassword').val()) {
+            modalAlert('Nhập lại mật khẩu không chính xác!');
+            return false;
+        }
+
+        // send
+        $.ajax({
+            method: 'post',
+            url: $(this).data('url'),
+            data: {
+                _method: 'put',
+                _token: '{{ csrf_token() }}',
+                name: $('#name').val(),
+                email: $('#email').val(),
+                newpassword: $('#newpassword').val(),
+                currentpassword: $('#currentpassword').val()
+            },
+            success: function () {
+                modalReload = true;
+                modalAlert('Cập nhật thành công.');
+                // location.reload();
+            },
+            error: function (res) {
+                modalAlert(res.responseText);
             }
         });
     });
 
     $('.userDelete').click(function () {
-        if (confirm("Xóa " + $(this).data('name') + " ?")) {
-            let tr = $(this).closest('tr');
-            $.ajax({
-                method: 'post',
-                url: $(this).data('url'),
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    _method: 'delete'
-                },
-                success: function () {
-                    alert('Xoá người dùng thành công.');
-                    tr.remove();
-                },
-                error: function (res) {
-                    alert(res.responseText);
-                }
-            });
-        }
+        let el = $(this);
+        let tr = $(this).closest('tr');
+        tr.addClass('bg-warning');
+        setTimeout(function ()
+        {
+            if (confirm("Xóa " + $(el).data('name') + " ?")) {
+                $.ajax({
+                    method: 'post',
+                    url: $(el).data('url'),
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        _method: 'delete'
+                    },
+                    success: function () {
+                        modalAlert('Xoá người dùng thành công.');
+                        tr.remove();
+                    },
+                    error: function (res) {
+                        modalAlert(res.responseText);
+                    }
+                });
+            } else {
+                tr.removeClass('bg-warning');
+            }
+        }, 100);
     });
 </script>
 

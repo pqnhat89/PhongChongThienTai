@@ -73,7 +73,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+<div class="modal fade" id="post" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             ...
@@ -85,28 +85,35 @@
         $.ajax({
             url: $(this).data('url'),
             success: function (response) {
-                $('.modal .modal-content').html('').html(response);
-                $('.modal').modal();
+                $('.modal#post .modal-content').html('').html(response);
+                $('.modal#post').modal();
             }
         });
     });
 
     $('.postDelete').click(function () {
-        if (confirm("Xóa " + $(this).data('title') + " ?")) {
-            let tr = $(this).closest('tr');
-            $.ajax({
-                method: 'post',
-                url: $(this).data('url'),
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    _method: 'delete'
-                },
-                success: function () {
-                    alert('Xoá bài viết thành công.');
-                    tr.remove();
-                }
-            });
-        }
+        let el = $(this);
+        let tr = $(this).closest('tr');
+        tr.addClass('bg-warning');
+        setTimeout(function ()
+        {
+            if (confirm("Xóa " + $(el).data('title') + " ?")) {
+                $.ajax({
+                    method: 'post',
+                    url: $(el).data('url'),
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        _method: 'delete'
+                    },
+                    success: function () {
+                        modalAlert('Xoá bài viết thành công.');
+                        tr.remove();
+                    }
+                });
+            } else {
+                tr.removeClass('bg-warning');
+            }
+        }, 100);
     });
 </script>
 

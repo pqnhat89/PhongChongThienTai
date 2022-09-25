@@ -113,13 +113,43 @@
     </div>
 </body>
 
+<div class="modal fade" id="alert" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
+    var modalReload = false;
+
     @if (count($errors) > 0)
         @foreach ($errors->all() as $error)
-            alert('{{ $error }}');
-            @break;
+            modalAlert('{{ $error }}')
+            @break
         @endforeach
     @endif
+
+    function modalAlert(message) {
+        $('.modal#alert .modal-body').html(message);
+        $('.modal#alert').modal('show');
+    }
+
+    $(document).on('hide.bs.modal', '.modal#alert', function() {
+        if (modalReload) {
+            location.reload();
+        }
+    });
 </script>
 
 </html>
