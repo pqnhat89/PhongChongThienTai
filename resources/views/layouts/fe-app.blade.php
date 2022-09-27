@@ -48,21 +48,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('/js/scripts.js') }}" defer></script>
-    <script src="{{ asset('/js/pctt-web-resource.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/pcct-script.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/pcct-script-1.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/dnn.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/dnn.modalpopup.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/jquery.smartmenus.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/jquery.smartmenus.bootstrap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/scripts_cp.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/dnncore.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/SearchSkinObjectPreview.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/dnn.servicesframework.js') }}" type="text/javascript"></script>
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9]>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!--<![endif]-->
 </head>
 <style>
     #myBtn, #hot-line  {

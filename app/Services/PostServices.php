@@ -16,7 +16,7 @@ class PostServices
 	 */
 	public static function getPostByType($type): Collection
 	{
-		return DB::table('post')->where('type', $type)->orderBy('id', 'DESC')->get();
+		return DB::table('post')->where('type', $type)->orderBy('id', 'DESC')->limit(10)->get();
 	}
 	
 	/**

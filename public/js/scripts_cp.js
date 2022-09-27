@@ -1,5 +1,6 @@
 function buttonUp() {
     var e = $(".search .searchInputContainer input").val();
+    console.log(e)
     e = $.trim(e).length, 0 !== e ?
         (
             $(".search").css("overflow", "visible")
@@ -21,9 +22,9 @@ function buttonUp() {
 $(document).ready(function () {
     $(".navbar-nav.sm-collapsible .caret").click(function (e) {
         e.preventDefault()
-    }), 
-    $('[data-toggle="tooltip"]').length && 
-    $('[data-toggle="tooltip"]').tooltip(), 
+    }),
+    $('[data-toggle="tooltip"]').length &&
+    $('[data-toggle="tooltip"]').tooltip(),
     $('<span class="search-toggle-icon"></span>').insertAfter(".search a.SearchButton");
     var searchBox = $(".search"),
         searchToggleIcon = $(".search-toggle-icon"),
