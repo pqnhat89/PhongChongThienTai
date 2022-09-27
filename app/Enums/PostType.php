@@ -19,4 +19,5 @@ class PostType extends Enum
 	const TKTH = 'Thống kê thiệt hại';
 	const BTTN = 'Bản tin thường niên';
 	const TLTT = 'Tài liệu truyền thông';
+	const KTTV = 'Thông tin KTTV, hồ chứa';
 }

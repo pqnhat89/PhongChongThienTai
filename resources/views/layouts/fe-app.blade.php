@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head id="Head">
-    @php $logo = \App\Helpers\Utils::getLogo() @endphp
-    @php $setting = \App\Helpers\Utils::getSetting() @endphp
-    @php $banner = \App\Services\BannerServices::getDefaultBanner() @endphp
-    @php $sidebarBanner = \App\Services\BannerServices::getSidebarBanner() @endphp
+    @php
+        $logo = \App\Helpers\Utils::getLogo();
+		$setting = \App\Helpers\Utils::getSetting();
+		$banner = \App\Services\BannerServices::getDefaultBanner();
+		$sidebarBanner = \App\Services\BannerServices::getSidebarBanner();
+        $about = \App\Services\PostServices::getPageByTitle(\App\Enums\PageTitle::ABOUT);
+        $contact = \App\Services\PostServices::getPageByTitle(\App\Enums\PageTitle::CONTACT);
+        $tcbm_ct = \App\Services\PostServices::getPageByTitle(\App\Enums\PageTitle::TCBMCT);
+    @endphp
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -152,7 +157,7 @@
                 <li><a href="/">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         Trang chủ</a></li>
-                <li><a href="{{route('about')}}">
+                <li><a href="{{'/xem/' . $about->id ?? 132}}">
                         <i class="fa fa-bookmark" aria-hidden="true"></i>
                         Giới thiệu</a></li>
                 <li class="dropdown">
@@ -162,10 +167,7 @@
                         Tổ chức bộ máy <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="group" aria-hidden="true" aria-expanded="false">
                         <li><a href="{{route('structure')}}">Sơ đồ chung</a></li>
-                        <li><a href="/#">Ban chỉ đạo TW về PCTT</a></li>
-                        <li><a href="/#">Ban Chỉ huy PCTT và TKCN cấp Tỉnh</a></li>
-                        <li><a href="/#">Ban Chỉ huy PCTT và TKCN cấp Huyện</a></li>
-                        <li><a href="/#">Ban Chỉ huy PCTT và TKCN cấp Xã</a></li>
+                        <li><a href="{{'/xem/' . $tcbm_ct->id ?? 135}}">Ban Chỉ huy PCTT và TKCN cấp Tỉnh</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -261,7 +263,7 @@
                                     {{mb_strtoupper(\App\Enums\PostType::TKTH)}}
                                 </strong>
                             </a>
-                            <a href="#"
+                            <a href="{{'/the-loai/' . array_search(\App\Enums\PostType::KTTV, $postType)}}"
                                class="list-group-item list-group-item-success">
                                 <strong>
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -284,7 +286,7 @@
                                     <a href="#" class="list-group-item"><strong>
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                             LỊCH CÔNG TÁC</strong></a>
-                                    <a href="#"
+                                    <a href="{{'/xem/' . $contact->id ?? 1}}"
                                        class="list-group-item">
                                         <strong>
                                             <i class="fa fa-phone" aria-hidden="true"></i>
@@ -298,14 +300,19 @@
                             <div class="panel-heading"><strong>LIÊN KẾT WEBSITE</strong></div>
                             <div class="panel-body" style="padding: 0">
                                 <div class="list-group" style="margin-bottom: 0px;">
-                                    <a target="_blank" href="http://www.nchmf.gov.vn/Web/vi-VN/72/Default.aspx"
+                                    <a target="_blank"
+                                       href="http://phongchongthientai.mard.gov.vn/Pages/Trang-chu.aspx"
                                        class="list-group-item"><strong>
-                                            <i class="fa fa-cloud" aria-hidden="true"></i>
-                                            Ảnh mây vệ tinh</strong></a>
+                                            <i class="fa fa-globe" aria-hidden="true"></i>
+                                            Ban Chỉ đạo TW về PCTT</strong></a>
                                     <a target="_blank" href="http://www.nchmf.gov.vn/"
                                        class="list-group-item"><strong>
                                             <i class="fa fa-globe" aria-hidden="true"></i>
                                             Khí tượng thủy văn TW</strong></a>
+                                    <a target="_blank" href="http://www.nchmf.gov.vn/Web/vi-VN/72/Default.aspx"
+                                       class="list-group-item"><strong>
+                                            <i class="fa fa-cloud" aria-hidden="true"></i>
+                                            Ảnh mây vệ tinh</strong></a>
                                     <a target="_blank" href="http://www.typhoon2000.ph/t2kgraphsat.gif"
                                        class="list-group-item"><strong>
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -322,19 +329,10 @@
                                        class="list-group-item"><strong>
                                             <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
                                             Dự báo bão Hong Kong</strong></a>
-                                    <a target="_blank"
-                                       href="http://phongchongthientai.mard.gov.vn/Pages/Trang-chu.aspx"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Ban Chỉ đạo TW về PCTT</strong></a>
                                     <a target="_blank" href="https://earth.nullschool.net/"
                                        class="list-group-item"><strong>
                                             <i class="fa fa-globe" aria-hidden="true"></i>
                                             Trường gió toàn cầu</strong></a>
-                                    <a target="_blank" href="http://www.vnbaolut.com/"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Dự báo thời tiết bão lụt Việt Nam</strong></a>
                                     <a target="_blank" href="http://www.jma.go.jp/en/typh"
                                        class="list-group-item"><strong>
                                             <i class="fa fa-globe" aria-hidden="true"></i>

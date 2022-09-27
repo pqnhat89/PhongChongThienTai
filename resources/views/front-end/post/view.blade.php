@@ -16,7 +16,7 @@
                             {!! html_entity_decode($post->content) !!}
                             @if($post->file)
                                 <p style="text-align: justify;">&nbsp;
-                                    <a href="{{url('/files') .'/'. $post->file}}">Tải file đính kèm</a>
+                                    <a href="{{url('/public/files') .'/'. $post->file}}">Tải file đính kèm</a>
                                 </p>
                             @endif
 
