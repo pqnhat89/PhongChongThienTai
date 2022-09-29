@@ -234,6 +234,13 @@
                                     {{mb_strtoupper(\App\Enums\PostType::VBCD_CDK)}}
                                 </strong>
                             </a>
+                            <a href="{{url('/the-loai') .'/'. array_search(\App\Enums\PostType::VBCDDH, $postType)}}"
+                               class="list-group-item list-group-item-success">
+                                <strong>
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    {{mb_strtoupper(\App\Enums\PostType::VBCDDH)}}
+                                </strong>
+                            </a>
                             <a href="{{url('/the-loai') .'/'. array_search(\App\Enums\PostType::BTTT, $postType)}}"
                                class="list-group-item list-group-item-success">
                                 <strong>
