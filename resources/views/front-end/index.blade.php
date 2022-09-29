@@ -25,7 +25,7 @@
                                         <a href="{{url('/xem') . '/' . $ttsk[0]->id}}">
                                             <div class="thumbnail"
                                                  style="padding: 0px; margin-bottom: 0px">
-                                                <img src="{{ url($ttsk[0]->image) }}"
+                                                <img src="{{ url($ttsk[0]->image ?? '') }}"
                                                      alt="100%x200"
                                                      data-src="holder.js/100%x200"
                                                      style="width: 100%; display: block;"
@@ -83,7 +83,7 @@
                                         <a href="{{url('/xem') . '/' . $bttt[0]->id}}">
                                             <div class="thumbnail"
                                                  style="padding: 0px; margin-bottom: 0px">
-                                                <img src="{{ url($bttt[0]->image) }}"
+                                                <img src="{{ url($bttt[0]->image ?? '') }}"
                                                      alt="100%x200"
                                                      data-src="holder.js/100%x200"
                                                      style="width: 100%; display: block;"
