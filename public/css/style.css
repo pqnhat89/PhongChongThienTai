@@ -1,7 +1,6 @@
 .cke_toolbox > span:nth-child(3),
 .cke_toolbox > span:nth-child(4),
 .cke_toolbox > span:nth-child(5),
-.cke_toolbox > span:nth-child(8),
 .cke_toolbox > span:nth-child(9) {
   display: none !important;
 }
