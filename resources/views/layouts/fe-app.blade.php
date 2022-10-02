@@ -93,28 +93,27 @@
     <a href="tel:{{str_replace('.', '', $setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805')}}" id="hot-line" title="{{$setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805'}}"><i class="fa fa-phone fa-2x"></i></a>
     <!-- UserControlPanel  -->
     <div id="topHeader">
-        <div>
+        <form id="search_form">
             <div class="row">
                 <div class="col-md-12">
                     <div class="search">
                             <span id="">
                                 <span class="searchInputContainer" data-moreresults="See More Results"
                                       data-noresult="No Results Found">
-                                    <input name="" type="text" maxlength="255" size="20" id=""
+                                    <input name="s" type="text" maxlength="255" size="20"
                                            class="NormalTextBox" aria-label="Search" autocomplete="off"
-                                           placeholder="Search...">
-                                    <a title="Clear search text"></a>
+                                           placeholder="Search..."
+                                    value="{{$_GET['s'] ?? ''}}">
                                 </span>
-                                <a id="" class="SearchButton"
-                                   href="">Search</a><span
-                                        class="search-toggle-icon"></span>
+                                <a class="SearchButton"
+                                   href="">Search</a>
                             </span>
 
                     </div>
                     <a id="search-action" aria-label="Search"></a>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
     <div class="hidden-xs">
         <div class="row" style=" margin-right: 0px; margin-left: 0px;">
@@ -127,11 +126,11 @@
 
                         </td>
                         <td style="text-align: left">
-                            <p style="font-size: 22px; color: #D82525; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px; font-family: cursive;">
+                            <p style="font-size: 22px; color: #D82525; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px;">
                                 {{$setting[\App\Enums\Setting::HEADER1]}}
                             </p>
                             <p class="banner-bch-text" style="color: #D82525;">{{$setting[\App\Enums\Setting::HEADER2]}}</p>
-                            <p style="font-size: 18px; color: #D82525; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px; font-family: cursive;">{{$setting[\App\Enums\Setting::HEADER3]}}</p>
+                            <p style="font-size: 18px; color: #D82525; font-weight: bold; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; margin-bottom: 5px;">{{$setting[\App\Enums\Setting::HEADER3]}}</p>
                         </td>
                     </tr>
                     <tr>

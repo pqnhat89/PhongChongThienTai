@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\PostType;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
@@ -25,6 +26,17 @@ class PostServices
 	 */
 	public static function getPageByTitle($title) {
 		return DB::table('post')->where('type', PostType::PAGE)->where('title', $title)->first();
+	}
+	
+	/**
+	 * @param $search
+	 * @return LengthAwarePaginator
+	 */
+	public static function getPostBySearch($search) {
+		return DB::table('post')->where('title', 'like', '%' . $search . '%')
+					->orWhere('sub_title', 'like','%' . $search .'%')
+					->orWhere('content', 'like','%' . $search .'%')
+					->paginate(20);
 	}
 	
 }

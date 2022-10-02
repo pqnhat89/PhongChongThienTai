@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Services\BannerServices;
+use App\Services\PostServices;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -16,15 +19,20 @@ class HomeController extends Controller
     {
         //
     }
-
-    /**
-     * Show homepage.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
+	
+	/**
+	 * Show homepage.
+	 *
+	 * @param Request $request
+	 * @return Renderable
+	 */
+    public function index(Request $request): Renderable
     {
-        return view('front-end.index');
+		if (isset($request->s)) {
+			$posts = PostServices::getPostBySearch($request->s);
+			return view('front-end.index', ['posts' => $posts]);
+		}
+	    return view('front-end.index');
     }
 	
 	public function about() {
