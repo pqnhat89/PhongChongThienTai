@@ -60,7 +60,7 @@
     #myBtn, #hot-line  {
         display: none;
         position: fixed;
-        right: 19%;
+        left: calc(1204px - 65px + (100% - 1204px)/2);
         z-index: 99;
         font-size: 10px;
         border: none;
@@ -70,7 +70,6 @@
         cursor: pointer;
         padding: 12px 15px;
         border-radius: 4px;
-        width: 50px;
         width: 50px;
     }
     #myBtn {

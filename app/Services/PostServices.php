@@ -32,7 +32,8 @@ class PostServices
 	 * @param $search
 	 * @return LengthAwarePaginator
 	 */
-	public static function getPostBySearch($search) {
+	public static function getPostBySearch($search): LengthAwarePaginator
+	{
 		return DB::table('post')->where('title', 'like', '%' . $search . '%')
 					->orWhere('sub_title', 'like','%' . $search .'%')
 					->orWhere('content', 'like','%' . $search .'%')

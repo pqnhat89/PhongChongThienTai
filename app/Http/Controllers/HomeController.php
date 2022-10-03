@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\BannerServices;
 use App\Services\PostServices;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
