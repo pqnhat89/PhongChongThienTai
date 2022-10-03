@@ -31,12 +31,32 @@ $(document).ready(function () {
                 !isEmpty(searchInput.val())
                 ?
                 (
-                    $('#search_form').submit()
+                    location.href = '/?s=' + searchInput.val()
                 )
                 :
                 (
                     searchInput.val("")
                 )
             )
-    })
+    });
+
+    var catSearchBtn = $('#cat_search'),
+        catClrBtn = $('#cat_clear'),
+        txtSearch = $('#txtSearchText');
+    if (catClrBtn || catSearchBtn) {
+        catClrBtn.on('click', function (e) {
+            e.preventDefault();
+            txtSearch.val('')
+        });
+
+        catSearchBtn.on('click', function (e) {
+            e.preventDefault();
+            var s = txtSearch.val();
+            if (!isEmpty(s)) {
+                $('#form_cat_search').submit()
+            } else {
+                txtSearch.val('')
+            }
+        });
+    }
 });

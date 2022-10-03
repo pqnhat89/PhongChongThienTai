@@ -93,27 +93,25 @@
     <a href="tel:{{str_replace('.', '', $setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805')}}" id="hot-line" title="{{$setting[\App\Enums\Setting::HOTLINE] ?? '02613.546.805'}}"><i class="fa fa-phone fa-2x"></i></a>
     <!-- UserControlPanel  -->
     <div id="topHeader">
-        <form id="search_form">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="search">
-                            <span id="">
-                                <span class="searchInputContainer" data-moreresults="See More Results"
-                                      data-noresult="No Results Found">
-                                    <input name="s" type="text" maxlength="255" size="20"
-                                           class="NormalTextBox" aria-label="Search" autocomplete="off"
-                                           placeholder="Search..."
-                                    value="{{$_GET['s'] ?? ''}}">
-                                </span>
-                                <a class="SearchButton"
-                                   href="">Search</a>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search">
+                        <span id="">
+                            <span class="searchInputContainer" data-moreresults="See More Results"
+                                  data-noresult="No Results Found">
+                                <input name="s" type="text" maxlength="255" size="20"
+                                       class="NormalTextBox" aria-label="Search" autocomplete="off"
+                                       placeholder="Search..."
+                                value="{{$_GET['s'] ?? ''}}">
                             </span>
+                            <a class="SearchButton"
+                               href="">Search</a>
+                        </span>
 
-                    </div>
-                    <a id="search-action" aria-label="Search"></a>
                 </div>
+                <a id="search-action" aria-label="Search"></a>
             </div>
-        </form>
+        </div>
     </div>
     <div class="hidden-xs">
         <div class="row" style=" margin-right: 0px; margin-left: 0px;">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\PostType;
 use App\Services\PostServices;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -24,10 +25,19 @@ class PostController extends Controller
 	 * @param $type
 	 * @return Renderable
 	 */
-    public function index($type): Renderable
+    public function index(Request $request, $type): Renderable
     {
 		$postType = PostType::toArray();
-	    $posts = DB::table('post')->where('type', $postType[$type])->orderBy('id', 'DESC')->paginate(10);
+	    $posts = DB::table('post')->where('type', $postType[$type]);
+	    if (isset($request->cat_txt)) {
+			$search = $request->cat_txt;
+		    $posts = $posts->where(function ($w) use ($search) {
+				$w->where('title', 'like', '%' . $search . '%')
+					->orWhere('sub_title', 'like','%' . $search .'%')
+					->orWhere('content', 'like','%' . $search .'%');
+		    });
+	    }
+		$posts = $posts->orderBy('id', 'DESC')->paginate(10);
 	    return view('front-end.post.index', ['posts' => $posts, 'type' => mb_strtoupper($postType[$type])]);
     }
 	
