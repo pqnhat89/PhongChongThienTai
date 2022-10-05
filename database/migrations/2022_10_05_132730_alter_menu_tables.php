@@ -14,7 +14,7 @@ class AlterMenuTables extends Migration
     public function up()
     {
 	    Schema::table('menu', function (Blueprint $table) {
-		    $table->integer('order')->unique()->change();
+		    $table->integer('order')->charset(null)->collation(null)->unique()->change();
 	    });
     }
 
