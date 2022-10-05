@@ -146,7 +146,7 @@
                 <li><a href="/">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         Trang chủ</a></li>
-                <li><a href="{{'/xem/' . $about->id ?? 132}}">
+                <li><a href="{{'/xem/' . ($about->id ?? 132)}}">
                         <i class="fa fa-bookmark" aria-hidden="true"></i>
                         Giới thiệu</a></li>
                 <li class="dropdown">
@@ -156,7 +156,7 @@
                         Tổ chức bộ máy <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="group" aria-hidden="true" aria-expanded="false">
                         <li><a href="{{route('structure')}}">Sơ đồ chung</a></li>
-                        <li><a href="{{'/xem/' . $tcbm_ct->id ?? 135}}">Ban Chỉ huy PCTT và TKCN cấp Tỉnh</a></li>
+                        <li><a href="{{'/xem/' . ($tcbm_ct->id ?? 135)}}">Ban Chỉ huy PCTT và TKCN cấp Tỉnh</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -282,7 +282,7 @@
                                     <a href="#" class="list-group-item"><strong>
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                             LỊCH CÔNG TÁC</strong></a>
-                                    <a href="{{'/xem/' . $contact->id ?? 1}}"
+                                    <a href="{{'/xem/' . ($contact->id ?? 1)}}"
                                        class="list-group-item">
                                         <strong>
                                             <i class="fa fa-phone" aria-hidden="true"></i>
