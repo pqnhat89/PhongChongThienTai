@@ -9,6 +9,7 @@
         $about = \App\Services\PostServices::getPageByTitle(\App\Enums\PageTitle::ABOUT);
         $contact = \App\Services\PostServices::getPageByTitle(\App\Enums\PageTitle::CONTACT);
         $tcbm_ct = \App\Services\PostServices::getPageByTitle(\App\Enums\PageTitle::TCBMCT);
+		$menu = \Illuminate\Support\Facades\DB::table('menu')->orderBy('order')->get();
     @endphp
 
     <meta charset="utf-8">
@@ -295,52 +296,19 @@
                             <div class="panel-heading"><strong>LIÊN KẾT WEBSITE</strong></div>
                             <div class="panel-body" style="padding: 0">
                                 <div class="list-group" style="margin-bottom: 0px;">
-                                    <a target="_blank"
-                                       href="http://phongchongthientai.mard.gov.vn/Pages/Trang-chu.aspx"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Ban Chỉ đạo TW về PCTT</strong></a>
-                                    <a target="_blank" href="http://www.nchmf.gov.vn/"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Khí tượng thủy văn TW</strong></a>
-                                    <a target="_blank" href="http://www.nchmf.gov.vn/Web/vi-VN/72/Default.aspx"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-cloud" aria-hidden="true"></i>
-                                            Ảnh mây vệ tinh</strong></a>
-                                    <a target="_blank" href="http://www.typhoon2000.ph/t2kgraphsat.gif"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            Phân tích ảnh vệ tinh hằng ngày</strong></a>
-                                    <a target="_blank" href="http://www.vnbaolut.com/"
-                                       class="list-group-item"><strong>
-                                            <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                                            Dự báo bão Việt Nam</strong></a>
-                                    <a target="_blank" href="https://www.nrlmry.navy.mil/tc_pages/tc_home.html"
-                                       class="list-group-item"><strong>
-                                            <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                                            Dự báo bão hải quân Hoa Kỳ</strong></a>
-                                    <a target="_blank" href="http://www.hko.gov.hk/wxinfo/currwx/tc_gis_e.htm"
-                                       class="list-group-item"><strong>
-                                            <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                                            Dự báo bão Hong Kong</strong></a>
-                                    <a target="_blank" href="https://earth.nullschool.net/"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Trường gió toàn cầu</strong></a>
-                                    <a target="_blank" href="http://www.jma.go.jp/en/typh"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Dự báo bão Nhật Bản</strong></a>
-                                    <a target="_blank" href="http://www.typhoon2000.ph/t2kgraphsat.gif"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Ảnh phân tích vệ tinh hằng ngày</strong></a>
-                                    <a target="_blank"
-                                       href="http://www.tropicalstormrisk.com/tracker/dynamic/W.html"
-                                       class="list-group-item"><strong>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            Dự báo TSR</strong></a>
+                                    @if(count($menu))
+                                        @foreach($menu as $val)
+                                            <a target="_blank"
+                                               href="{{$val->url}}"
+                                               class="list-group-item"><strong>
+                                                    @if(isset($val->icon) && $val->icon == 'glyphicon glyphicon-bullhorn')
+                                                        <span class="{{$val->icon}}" aria-hidden="true"></span>
+                                                    @else
+                                                        <i class="{{$val->icon}}" aria-hidden="true"></i>
+                                                    @endif
+                                                    {{$val->title}}</strong></a>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>

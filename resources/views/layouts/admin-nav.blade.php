@@ -7,7 +7,7 @@
             </a>
             <a class="nav-link" href="{{ route('admin.menu.index') }}">
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
-                Menu
+                Liên kết website
             </a>
             <a class="nav-link" href="{{ route('admin.banner.index') }}">
                 <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
