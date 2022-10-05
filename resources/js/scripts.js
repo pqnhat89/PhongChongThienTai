@@ -93,7 +93,7 @@
             input = clone.find("input[type='text']"),
             hidden = clone.find("input[type='hidden']");
 
-        hidden.remove();
+        hidden.val(0);
         input.val("");
         input.attr("disabled", false);
         $(this).closest(".card-body").find(".form-input").append(clone);

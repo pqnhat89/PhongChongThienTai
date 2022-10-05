@@ -264,7 +264,7 @@ class AdminController extends Controller
                     }
                 }
                 // delete menu
-                DB::table('menu')->whereNotIn('id', $request->id ?? [0])->delete();
+                DB::table('menu')->whereNotIn('title', $request->title ?? [0])->delete();
                 DB::table('submenu')->whereNotIn('menu_id', $request->id ?? [0])->delete();
                 return $reload;
             });
