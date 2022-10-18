@@ -110,6 +110,11 @@
 
                 </div>
                 <a id="search-action" aria-label="Search"></a>
+                <div id="login" class="pull-right">
+                    <div class="loginGroup">
+                        <a title="Đăng nhập" href="{{route('admin')}}" style="font-size: 14px;">Đăng nhập</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
