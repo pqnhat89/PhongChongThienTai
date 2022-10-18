@@ -34,11 +34,13 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('/font/css/font-awesome.min.css') }}">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link href="{{ asset('/css/default.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('/css/admin.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('/css/SearchSkinObjectPreview.css') }}" type="text/css" rel="stylesheet">
