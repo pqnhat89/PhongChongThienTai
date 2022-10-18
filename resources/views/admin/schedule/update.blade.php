@@ -44,6 +44,10 @@
         <label for="content">Nội dung công tác</label>
         <textarea class="form-control" id="content" rows="5">{{ $schedule->content ?? null }}</textarea>
     </div>
+    <div class="form-group">
+        <label for="place">Địa điểm</label>
+        <input type="text" class="form-control" id="place" placeholder="Địa điểm" value="{{ $schedule->place ?? null }}">
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>

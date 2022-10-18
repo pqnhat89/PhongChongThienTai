@@ -357,6 +357,7 @@ class AdminController extends Controller
                 'from' => Carbon::createFromFormat('d/m/Y H', $request->from),
                 'to' => Carbon::createFromFormat('d/m/Y H', $request->to),
                 'content' => $request->content,
+                'place' => $request->place,
             ];
             if ($request->id) {
                 // update

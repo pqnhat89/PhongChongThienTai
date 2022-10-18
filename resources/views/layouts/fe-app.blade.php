@@ -284,7 +284,7 @@
                                        class="list-group-item"><strong>
                                             <i class="fa fa-bullhorn" aria-hidden="true"></i>
                                             {{mb_strtoupper(\App\Enums\PostType::TLTT)}}</strong></a>
-                                    <a href="#" class="list-group-item"><strong>
+                                    <a href="{{route('schedule')}}" class="list-group-item"><strong>
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                             LỊCH CÔNG TÁC</strong></a>
                                     <a href="{{'/xem/' . ($contact->id ?? 1)}}"

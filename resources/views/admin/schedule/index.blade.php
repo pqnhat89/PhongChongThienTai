@@ -44,6 +44,7 @@
                         <th width="50">Ngày đi</th>
                         <th width="50">Ngày về</th>
                         <th>Nội dung công tác</th>
+                        <th width="200">Địa điểm</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -55,6 +56,7 @@
                                 <td nowrap>{{ $v->fromDate . ' ' . $v->fromHour . ':00' }}</td>
                                 <td nowrap>{{ $v->toDate . ' ' . $v->toHour . ':00' }}</td>
                                 <td>{{ $v->content }}</td>
+                                <td>{{ $v->place }}</td>
                                 <td nowrap>
                                     <button class="btn btn-warning scheduleUpdate"
                                         data-url="{{ route('admin.schedule.update', ['id' => $v->id]) }}">Sửa</button>
@@ -116,7 +118,8 @@
                 name: $('#name').val(),
                 from: $('#from').val() + ' ' + $('#fromHour').val(),
                 to: $('#to').val() + ' ' + $('#toHour').val(),
-                content: $('#content').val()
+                content: $('#content').val(),
+                place: $('#place').val()
             },
             success: function () {
                 modalReload = true;
