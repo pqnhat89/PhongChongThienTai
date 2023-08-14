@@ -78,6 +78,7 @@
                 \App\Enums\PostType::VBCDDH => \App\Services\PostServices::getPostByType(\App\Enums\PostType::VBCDDH),
                 \App\Enums\PostType::KHPA => \App\Services\PostServices::getPostByType(\App\Enums\PostType::KHPA),
             ];
+            $postType = \App\Enums\PostType::toArray();
 	    ?>
         @foreach($items as $cat_name => $cat_list)
             @if(in_array($cat_name, [\App\Enums\PostType::TTSK, \App\Enums\PostType::BTTT, \App\Enums\PostType::DBTT]))
@@ -90,7 +91,7 @@
                                         <div class="panel-heading">
                                             <h3 class="panel-title"
                                                 style="font-size: 12px; font-weight: bold">
-                                                <a href="">{{$cat_name}}</a>
+                                                <a href="{{url('/the-loai') .'/'. array_search($cat_name, $postType)}}">{{$cat_name}}</a>
                                             </h3>
                                         </div>
                                         <div class="panel-body" style="padding: 0px;">
@@ -150,7 +151,7 @@
                                         <div class="panel-heading">
                                             <h3 class="panel-title"
                                                 style="font-size: 12px; font-weight: bold">
-                                                <a href="">{{$cat_name}}</a>
+                                                <a href="{{url('/the-loai') .'/'. array_search($cat_name, $postType)}}">{{$cat_name}}</a>
                                             </h3>
                                         </div>
                                         <div class="panel-body" style="padding: 0px;">
