@@ -373,4 +373,21 @@ class AdminController extends Controller
     {
         DB::table('schedule')->where('id', $request->id)->delete();
     }
+
+    // list post per cat
+    public function listPerCatIndex(Request $request)
+    {
+        $post = [];
+        foreach (\App\Enums\PostType::toArray() as $v) {
+            $count = DB::table('post')
+            ->select('id')
+            ->where('type', '=', $v)
+            ->count();
+            $post[$v] = $count;
+        }
+
+        return view('admin.post.list_per_cat', [
+            'post' => $post
+        ]);
+    }
 }

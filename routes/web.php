@@ -54,4 +54,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/schedule/create', 'AdminController@scheduleCreate')->name('admin.schedule.create');
     Route::match(['get', 'put'], '/schedule/update/{id}', 'AdminController@scheduleUpdate')->name('admin.schedule.update');
     Route::delete('/schedule/delete/{id}', 'AdminController@scheduleDelete')->name('admin.schedule.delete');
+
+    Route::get('/list-per-cat', 'AdminController@listPerCatIndex')->name('admin.list.index');
 });

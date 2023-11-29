@@ -35,7 +35,7 @@
                 Thêm mới
             </button>
             <div class="float-right">
-                {{ $schedule->links() }}
+                {{ $schedule->appends(request()->input())->links() }}
             </div>
             <table class="table table-striped table-bordered table-hover">
                 <thead>
@@ -71,7 +71,7 @@
                 </tbody>
             </table>
             <div class="float-right">
-                {{ $schedule->links() }}
+                {{ $schedule->appends(request()->input())->links() }}
             </div>
         </div>
     </div>
