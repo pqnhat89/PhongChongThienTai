@@ -31,8 +31,7 @@
     {{-- Plugins --}}
     <script src="{{ asset('/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('/js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     <script src="{{ asset('/js/moment-with-locales.min.js')}}"></script>
     <script src="{{ asset('/js/bootstrap-datetimepicker.min.js')}}"></script>
@@ -49,6 +48,8 @@
     <link href="{{ asset('/css/jquery.smartmenus.bootstrap.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('/css/skin.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('/css/pclb.css') }}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
 
     <!-- Scripts -->
     <script src="{{ asset('/js/scripts.js') }}" defer></script>
@@ -57,7 +58,7 @@
     <script src="{{ asset('/js/scripts_cp.js') }}" type="text/javascript"></script>
     <!--[if lt IE 9]>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <!--<![endif]-->
 </head>
 <style>
@@ -321,17 +322,17 @@
                             </div>
                         </div>
 
-{{--                        <div class="panel panel-primary">--}}
-{{--                            <div class="panel-heading"><strong>THỐNG KÊ TRUY CẬP</strong></div>--}}
-{{--                            <div class="panel-body" style="padding: 0">--}}
-{{--                                <div class="list-group" style="margin-bottom: 0px;">--}}
-{{--                                    <a href="/#" class="list-group-item">Đang online:--}}
-{{--                                        5</a>--}}
-{{--                                    <a href="/#" class="list-group-item">Tổng lượt--}}
-{{--                                        truy cập: 1.000</a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"><strong>THỐNG KÊ TRUY CẬP</strong></div>
+                            <div class="panel-body" style="padding: 0">
+                                <div class="list-group" style="margin-bottom: 0px;">
+                                    <a href="/#" class="list-group-item">Đang online:
+                                        5</a>
+                                    <a href="/#" class="list-group-item">Tổng lượt
+                                        truy cập: 1.000</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-6 col-xs-6 spacingTop"
                          style="padding-top: 15px; padding-right: 5px; padding-left: 5px;">
@@ -447,6 +448,17 @@
     });
 </script>
 <script>
+    // Active slider
+    $(document).ready(function() {
+        $(".owl-carousel").owlCarousel({
+            items: 5,
+            singleItem: true,
+            loop:true,
+            margin:10,
+            autoPlay:true,
+            pagination: false
+        });
+    })
     // Get the button
     let mybutton = document.getElementById("myBtn");
     let hotLine = document.getElementById("hot-line");

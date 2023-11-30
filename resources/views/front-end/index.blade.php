@@ -96,26 +96,27 @@
                                         </div>
                                         <div class="panel-body" style="padding: 0px;">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <a href="{{url('/xem') . '/' . $cat_list[0]->id}}">
-                                                        <div class="thumbnail"
-                                                            style="padding: 0px; margin-bottom: 0px">
-                                                            <img src="{{ url($cat_list[0]->image ?? '') }}"
-                                                                alt="100%x200"
-                                                                data-src="holder.js/100%x200"
-                                                                style="width: 100%; display: block;"
-                                                                data-holder-rendered="true">
-                                                            <div class="caption">
-                                                                <p style="font-weight: bold; margin: 0 0 0px; color: #d82525; text-align: justify">
-                                                                    {{$cat_list[0]->title}}
-                                                                </p>
-                                                                <p style="text-align: justify; margin-bottom: 0px">
-                                                                    {{$cat_list[0]->sub_title}}
-                                                                </p>
-                                                            </div>
+                                                    <div class="col-md-6">
+                                                        <div class=" owl-carousel">
+                                                            @foreach($cat_list as $post)
+                                                                <a href="{{url('/xem') . '/' . $post->id}}">
+                                                                    <div class="thumbnail"
+                                                                        style="padding: 0px; margin-bottom: 0px">
+                                                                        <img src="{{ url($post->image ?? '') }}"
+                                                                            alt="100%x200"
+                                                                            data-src="holder.js/100%x200"
+                                                                            style="width: 100%; display: block;"
+                                                                            data-holder-rendered="true">
+                                                                        <div class="caption">
+                                                                            <p style="font-weight: bold; margin: 0 0 0px; color: #d82525; text-align: justify">
+                                                                                {{$post->title}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            @endforeach
                                                         </div>
-                                                    </a>
-                                                </div>
+                                                    </div>
                                                 <div class="col-md-6" style="padding-left: 0;">
                                                     <ul class="list-group" style="margin-left: 0px">
                                                         @for($i=1; $i<count($cat_list); $i++)

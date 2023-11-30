@@ -18,16 +18,6 @@
         });
     });
 
-    // Active slider
-    // $(".owl-carousel").owlCarousel({
-    //     items: 3,
-    //     itemsDesktop: [1199, 3],
-    //     itemsDesktopSmall: [980, 2],
-    //     itemsMobile: [600, 1],
-    //     pagination: true,
-    //     navigationText: true
-    // });
-
     // Token
     let token = $("meta[name='csrf-token']").attr("content");
 
@@ -54,7 +44,7 @@
     var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
     $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function ()
     {
-        if (this.href === path)
+        if (path.includes(this.href))
         {
             $(this).addClass("active");
         }
