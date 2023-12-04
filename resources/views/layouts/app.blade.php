@@ -15,6 +15,16 @@
 
     <link rel="SHORTCUT ICON" href="{{ $logo->image ?? '' }}" type="image/x-icon">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FPJQ6CCYTB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-FPJQ6CCYTB');
+    </script>
+
     {{-- Plugins --}}
     <script src="{{ asset('/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('/js/bootstrap.min.js')}}"></script>

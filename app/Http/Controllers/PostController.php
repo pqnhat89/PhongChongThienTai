@@ -6,9 +6,11 @@ use App\Enums\PostType;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\Utils;
 
 class PostController extends Controller
 {
+	private $total;
     /**
      * Create a new controller instance.
      *
@@ -16,7 +18,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        //
+        $this->total = Utils::getTotalVisit();
     }
 	
 	/**
@@ -37,7 +39,7 @@ class PostController extends Controller
 		    });
 	    }
 		$posts = $posts->orderBy('id', 'DESC')->paginate(10);
-	    return view('front-end.post.index', ['posts' => $posts, 'type' => mb_strtoupper($postType[$type])]);
+	    return view('front-end.post.index', ['posts' => $posts, 'type' => mb_strtoupper($postType[$type]), 'total' => $this->total]);
     }
 	
 	/**
@@ -46,10 +48,11 @@ class PostController extends Controller
 	 */
 	public function view($id): Renderable
     {
+		$totalVisits = Utils::getTotalVisit();
 	    $post = DB::table('post')->where('id', $id)->first();
 	    $relatedPost = DB::table('post')->where('id', '!=', $id)
 		    ->where('type', $post->type)->get();
-	    return view('front-end.post.view', ['post' => $post, 'relatedPost' =>$relatedPost]);
+	    return view('front-end.post.view', ['post' => $post, 'relatedPost' =>$relatedPost, 'total' => $this->total]);
     }
 	
 }

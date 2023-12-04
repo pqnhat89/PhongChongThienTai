@@ -28,6 +28,16 @@
     <link rel="SHORTCUT ICON" href="{{ $logo->image ?? '' }}" type="image/x-icon">
     <link href="" rel="canonical">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FPJQ6CCYTB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-FPJQ6CCYTB');
+    </script>
+
     {{-- Plugins --}}
     <script src="{{ asset('/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('/js/bootstrap.min.js')}}"></script>
@@ -326,10 +336,10 @@
                             <div class="panel-heading"><strong>THỐNG KÊ TRUY CẬP</strong></div>
                             <div class="panel-body" style="padding: 0">
                                 <div class="list-group" style="margin-bottom: 0px;">
-                                    <a href="/#" class="list-group-item">Đang online:
-                                        5</a>
+                                    <!-- <a href="/#" class="list-group-item">Đang online:
+                                        5</a> -->
                                     <a href="/#" class="list-group-item">Tổng lượt
-                                        truy cập: 1.000</a>
+                                        truy cập: {{$total}}</a>
                                 </div>
                             </div>
                         </div>
@@ -456,7 +466,7 @@
             loop:true,
             margin:10,
             autoPlay:true,
-            pagination: false
+            pagination: true
         });
     })
     // Get the button

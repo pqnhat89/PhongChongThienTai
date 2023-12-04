@@ -24,3 +24,5 @@ Homestead.json
 .idea
 public/files
 public/public
+.vscode/
+*.zip

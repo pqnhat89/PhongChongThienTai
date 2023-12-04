@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Utils;
 use App\Services\PostServices;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+	private $totalVisits;
     /**
      * Create a new controller instance.
      *
@@ -17,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //
+        $this->totalVisits = Utils::getTotalVisit();
     }
 	
 	/**
@@ -30,17 +32,17 @@ class HomeController extends Controller
     {
 		if (isset($request->s)) {
 			$posts = PostServices::getPostBySearch($request->s);
-			return view('front-end.index', ['posts' => $posts]);
+			return view('front-end.index', ['posts' => $posts, 'total' => $this->totalVisits]);
 		}
-	    return view('front-end.index');
+	    return view('front-end.index', ['total' => $this->totalVisits]);
     }
 	
 	public function about() {
-		return view('front-end.about');
+		return view('front-end.about', ['total' => $this->totalVisits]);
 	}
 	
 	public function structure() {
-		return view('front-end.structure');
+		return view('front-end.structure', ['total' => $this->totalVisits]);
 	}
 	
 	/**
@@ -78,6 +80,6 @@ class HomeController extends Controller
 			->groupBy('name')
 			->get();
 		
-		return view('front-end.schedule', ['schedules' => $schedules, 'leader' => $leader]);
+		return view('front-end.schedule', ['schedules' => $schedules, 'leader' => $leader, 'total' => $this->totalVisits]);
 	}
 }

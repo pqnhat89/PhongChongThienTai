@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 use App\Enums\PostType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -8,10 +8,8 @@ class PostSeeder extends Seeder
 {
 	/**
 	 * Run the database seeds.
-	 *
-	 * @return void
 	 */
-	public function run()
+	public function run(): void
 	{
 		$data = [];
 		$type = array_values(PostType::toArray());
