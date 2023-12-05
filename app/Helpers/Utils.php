@@ -43,13 +43,17 @@ class Utils
 	// Get total visit
 	public static function getTotalVisit() {
 		// Get the analytics data
+		$totalVisits = 0;
 		$startDate = new Carbon(Utils::START_DATE);
 		$endDate = Carbon::now();
 
-		$period = Period::create($startDate, $endDate);
-		$analyticsData = Analytics::fetchVisitorsAndPageViews($period);
+		$analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::create($startDate, $endDate));
 
-		$totalVisits = $analyticsData[0]['screenPageViews'];
-		return $totalVisits ?? 1;
+		if(count($analyticsData)) {
+			foreach($analyticsData as $data) {
+				$totalVisits += $data['screenPageViews'];
+			}
+		}
+		return number_format($totalVisits);
 	}
 }

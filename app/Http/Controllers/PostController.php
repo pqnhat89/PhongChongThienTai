@@ -10,7 +10,6 @@ use App\Helpers\Utils;
 
 class PostController extends Controller
 {
-	private $total;
     /**
      * Create a new controller instance.
      *
@@ -18,7 +17,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        $this->total = Utils::getTotalVisit();
+		//
     }
 	
 	/**
@@ -39,7 +38,7 @@ class PostController extends Controller
 		    });
 	    }
 		$posts = $posts->orderBy('id', 'DESC')->paginate(10);
-	    return view('front-end.post.index', ['posts' => $posts, 'type' => mb_strtoupper($postType[$type]), 'total' => $this->total]);
+	    return view('front-end.post.index', ['posts' => $posts, 'type' => mb_strtoupper($postType[$type])]);
     }
 	
 	/**
@@ -52,7 +51,7 @@ class PostController extends Controller
 	    $post = DB::table('post')->where('id', $id)->first();
 	    $relatedPost = DB::table('post')->where('id', '!=', $id)
 		    ->where('type', $post->type)->get();
-	    return view('front-end.post.view', ['post' => $post, 'relatedPost' =>$relatedPost, 'total' => $this->total]);
+	    return view('front-end.post.view', ['post' => $post, 'relatedPost' =>$relatedPost]);
     }
 	
 }

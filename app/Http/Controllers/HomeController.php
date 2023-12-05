@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-	private $totalVisits;
     /**
      * Create a new controller instance.
      *
@@ -19,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->totalVisits = Utils::getTotalVisit();
+		//
     }
 	
 	/**
@@ -32,17 +31,17 @@ class HomeController extends Controller
     {
 		if (isset($request->s)) {
 			$posts = PostServices::getPostBySearch($request->s);
-			return view('front-end.index', ['posts' => $posts, 'total' => $this->totalVisits]);
+			return view('front-end.index', ['posts' => $posts]);
 		}
-	    return view('front-end.index', ['total' => $this->totalVisits]);
+	    return view('front-end.index');
     }
 	
 	public function about() {
-		return view('front-end.about', ['total' => $this->totalVisits]);
+		return view('front-end.about');
 	}
 	
 	public function structure() {
-		return view('front-end.structure', ['total' => $this->totalVisits]);
+		return view('front-end.structure');
 	}
 	
 	/**
@@ -80,6 +79,6 @@ class HomeController extends Controller
 			->groupBy('name')
 			->get();
 		
-		return view('front-end.schedule', ['schedules' => $schedules, 'leader' => $leader, 'total' => $this->totalVisits]);
+		return view('front-end.schedule', ['schedules' => $schedules, 'leader' => $leader]);
 	}
 }
