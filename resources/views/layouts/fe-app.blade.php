@@ -339,7 +339,7 @@
                                     <!-- <a href="/#" class="list-group-item">Đang online:
                                         5</a> -->
                                     <a href="/#" class="list-group-item">Tổng lượt
-                                        truy cập: {{\App\Helpers\Utils::getTotalVisit() ?? 100}}</a>
+                                        truy cập: {{number_format(\App\Helpers\Utils::getTotalVisit('total'))}}</a>
                                 </div>
                             </div>
                         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserRole;
+use App\Helpers\Utils;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -379,10 +380,7 @@ class AdminController extends Controller
     {
         $post = [];
         foreach (\App\Enums\PostType::toArray() as $v) {
-            $count = DB::table('post')
-            ->select('id')
-            ->where('type', '=', $v)
-            ->count();
+            $count = Utils::countPostByType($v);
             $post[$v] = $count;
         }
 

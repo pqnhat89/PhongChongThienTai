@@ -38,7 +38,8 @@ class PostController extends Controller
 		    });
 	    }
 		$posts = $posts->orderBy('id', 'DESC')->paginate(10);
-	    return view('front-end.post.index', ['posts' => $posts, 'type' => mb_strtoupper($postType[$type])]);
+		$totalPosts = Utils::countPostByType($postType[$type]);
+	    return view('front-end.post.index', ['posts' => $posts, 'type' => mb_strtoupper($postType[$type]), 'totalPosts' => $totalPosts]);
     }
 	
 	/**
@@ -47,7 +48,6 @@ class PostController extends Controller
 	 */
 	public function view($id): Renderable
     {
-		$totalVisits = Utils::getTotalVisit();
 	    $post = DB::table('post')->where('id', $id)->first();
 	    $relatedPost = DB::table('post')->where('id', '!=', $id)
 		    ->where('type', $post->type)->get();

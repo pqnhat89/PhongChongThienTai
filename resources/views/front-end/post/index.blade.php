@@ -30,7 +30,13 @@
                                         </span>
                                     </div>
                                 </div>
-
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-6">
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Tổng Số bài viết: {{number_format($totalPosts)}}</h6>
+                                </div>
                             </div>
                         </form>
                         @if(count($posts))
@@ -54,7 +60,11 @@
                                                                  data-holder-rendered="true">
                                                         </div>
                                                         <div class="col-md-9">
-                                                            {{$post->sub_title}}
+                                                            <span>{{$post->sub_title}}</span>
+                                                            <br>
+                                                            <span style="float: right; margin-top:20px; font-weight:bolder;">
+                                                                Lượt xem: {{number_format(\App\Helpers\Utils::getTotalVisit("/xem/$post->id"))}}
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>

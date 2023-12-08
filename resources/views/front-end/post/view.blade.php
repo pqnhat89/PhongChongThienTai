@@ -19,14 +19,23 @@
                                     <a href="{{url('/public/files') .'/'. $post->file}}">Tải file đính kèm</a>
                                 </p>
                             @endif
-                            <div style="margin-bottom: 10px; text-align: right;">
-                                <button onclick="share()" class="btn btn-primary">
-                                    <i class="fa fa-facebook"></i>
-                                </button>
-                                <button onclick="copy()" class="btn btn-primary">
-                                    Copy
-                                </button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span style="font-weight:bolder;">Lượt xem: {{number_format(\App\Helpers\Utils::getTotalVisit("/xem/$post->id"))}}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="margin-bottom: 10px; text-align: right;">
+                                        <button onclick="share()" class="btn btn-primary">
+                                            <i class="fa fa-facebook"></i>
+                                        </button>
+                                        <button onclick="copy()" class="btn btn-primary">
+                                            Copy
+                                        </button>
+                                    </div>
+                                </div>
+
                             </div>
+                            
                         </div>
                     </div>
                     <div class="panel panel-primary">
